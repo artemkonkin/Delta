@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delta", "Delta\Delta.csproj", "{75961956-C75B-4B2A-BD83-8A23D3FADD8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainLayer", "DomainLayer", "{D4F5652A-EBDC-469A-A626-0E13CD1A13A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfrastructureLayer", "InfrastructureLayer", "{20C1BF35-FB9D-4E61-914E-A3E228175708}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceLayer", "ServiceLayer", "{1629B62E-95E6-429D-BCB4-0F37714F66F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75961956-C75B-4B2A-BD83-8A23D3FADD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75961956-C75B-4B2A-BD83-8A23D3FADD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75961956-C75B-4B2A-BD83-8A23D3FADD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75961956-C75B-4B2A-BD83-8A23D3FADD8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C42E8E54-EE26-4D78-9D48-66521E6DF348}
+	EndGlobalSection
+EndGlobal
