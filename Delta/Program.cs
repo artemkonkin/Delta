@@ -1,18 +1,19 @@
-﻿using Delta.Data;
-using Microsoft.AspNetCore.Identity;
+using DbContextLib;
 using Microsoft.EntityFrameworkCore;
+using UserDomain;
+using Microsoft.AspNetCore.Identity;
 
 // Δ Delta
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DeltaContextConnection") ?? throw new InvalidOperationException("Connection string 'DeltaContextConnection' not found.");
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
