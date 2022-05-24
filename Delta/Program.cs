@@ -1,8 +1,9 @@
 using DbContextLib;
 using Delta.Extensions;
-using Microsoft.EntityFrameworkCore;
 using UserDomain;
 using static Delta.Extensions.AppServiceCollection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 // Δ Delta
 
@@ -17,7 +18,7 @@ AddServices(builder);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AppDbContext>();
+    .AddEntityFrameworkStores<DbContextLib.AppDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
