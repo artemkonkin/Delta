@@ -8,7 +8,6 @@ using static Delta.Extensions.AppServiceCollection;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
-var connectionString = builder.Configuration.GetConnectionString("DeltaContextConnection") ?? throw new InvalidOperationException("Connection string 'DeltaContextConnection' not found.");
 var ext = new AppServiceCollection();
 
 AddDatabase(configuration, builder);

@@ -13,7 +13,7 @@ namespace Delta.Extensions
     {
         public static void AddDatabase(ConfigurationManager configurationManager, WebApplicationBuilder builder)
         {
-            var conStrBuilder = new SqlConnectionStringBuilder(configurationManager.GetConnectionString("DbConnectionString"));
+            var conStrBuilder = new SqlConnectionStringBuilder(configurationManager.GetConnectionString("DeltaConnectionString"));
             var connection = conStrBuilder.ConnectionString;
 
             builder.Services.AddDbContext<AppDbContext>(options =>

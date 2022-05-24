@@ -10,10 +10,7 @@ namespace BaseRepositoryLib
         private readonly DbFactory _dbFactory;
         private DbSet<T> _dbSet;
 
-        protected DbSet<T> DbSet
-        {
-            get => _dbSet ??= _dbFactory.DbContext.Set<T>();
-        }
+        private DbSet<T> DbSet => _dbSet ??= _dbFactory.DbContext.Set<T>();
 
         public Repository(DbFactory dbFactory)
         {
