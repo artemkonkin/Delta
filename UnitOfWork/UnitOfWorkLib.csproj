@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
-    <ProjectReference Include="..\Delta\Delta.csproj" />
   </ItemGroup>
 
 </Project>

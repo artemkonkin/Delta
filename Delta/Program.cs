@@ -1,15 +1,20 @@
 using DbContextLib;
+using Delta.Extensions;
 using Microsoft.EntityFrameworkCore;
 using UserDomain;
-using Microsoft.AspNetCore.Identity;
+using static Delta.Extensions.AppServiceCollection;
 
 // Δ Delta
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 var connectionString = builder.Configuration.GetConnectionString("DeltaContextConnection") ?? throw new InvalidOperationException("Connection string 'DeltaContextConnection' not found.");
+var ext = new AppServiceCollection();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+AddDatabase(configuration, builder);
+AddRepositories(builder);
+AddServices(builder);
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)

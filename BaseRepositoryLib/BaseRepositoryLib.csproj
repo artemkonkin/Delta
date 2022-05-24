@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Delta\Delta.csproj" />
+    <ProjectReference Include="..\BaseEntityLib\BaseEntityLib.csproj" />
+    <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
   </ItemGroup>
 
 </Project>
