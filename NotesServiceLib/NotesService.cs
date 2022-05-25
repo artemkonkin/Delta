@@ -8,7 +8,7 @@ using RepositoriesLib.Interfaces;
 using UnitOfWorkLib;
 using UserDomain;
 
-namespace ServicesLib
+namespace NotesServiceLib
 {
     /// <summary>
     /// Notes service
