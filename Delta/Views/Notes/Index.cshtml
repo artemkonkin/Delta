@@ -1,4 +1,5 @@
-﻿@model IEnumerable<NotesDomain.NoteEntity>
+﻿@using Microsoft.CodeAnalysis.Scripting
+@model IEnumerable<NotesDomain.NoteEntity>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,6 +7,12 @@
 }
 
 <h1>Index</h1>
+
+<div id="notesList">
+    <p>
+        {{ title }}
+    </p>
+</div>
 
 <p>
     <a asp-action="Create">CheckData New</a>
@@ -46,3 +53,20 @@
 }
     </tbody>
 </table>
+
+@section Scripts
+{
+    <link rel="stylesheet" href="~/lib/antd.min.css" asp-append-version="true"/>
+    <script src="lib/antd.min.js"></script>
+    <script src="lib/default-theme.min.js"></script>
+
+    <script type="text/javascript">
+        var vm = new Vue(
+            {
+                el: "notes_list",
+                data: {
+                    title: "Notes title Vue"
+                }
+            })
+    </script>
+}

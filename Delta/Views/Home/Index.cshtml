@@ -1,8 +1,148 @@
-﻿@{
+﻿@model IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="app">
+    @*APP*@
+
+    <p>
+        Введите имя:
+        <input class="form-control" type="text" v-model="userName" placeholder="Введите имя"/>
+    </p>
+    <p>Ваше имя: {{ userName }}</p>
+
+    <hr/>
+
+    <h1 class="display-4">User: {{user.name}}</h1>
+    <h2 class="display-4">Last name: {{user.lastName}}</h2>
+    <h2 class="display-4">Username: {{user.username}}</h2>
+
+    <hr/>
+
+    <div v-if="friends_list.length > 0">
+        <h2 class="display-4">Friends!</h2>
+        <div class="list-group" v-for="friend in friends_list">
+            <a v-on:click="removeFriend(friend.username, friend.lastName, friend.name)" class="list-group-item list-group-item-action">
+                User: {{friend.name}}, Last Name {{friend.lastName}}, Username: {{friend.username}}
+            </a>
+        </div>
+    </div>
+
+    <hr/>
+
+    <h1 class="display-4">Create new friend</h1>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"></span>
+        </div>
+        <input type="text" class="form-control" v-model="new_friend.name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"></span>
+        </div>
+        <input type="text" class="form-control" v-model="new_friend.lastName" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"></span>
+        </div>
+        <input type="text" class="form-control" v-model="new_friend.userName" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+    </div>`
+
+    <button type="button" class="btn btn-dark" v-on:click="addFriend">Add user</button>
+
+    <hr/>
+
+    <button v-on:click="increment">{{ count }}</button>
+
+    @*APP*@
 </div>
+
+@section Scripts
+{
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data() {
+                return {
+                    count: 0,
+                    user: {
+                        username: '@Model.User.Username',
+                        lastName: '@Model.User.LastName',
+                        name: '@Model.User.Name'
+                    },
+                    friends_list: [],
+                    new_friend: {
+                        username: "",
+                        lastName: "",
+                        name: ""
+                    },
+                    userName: 'Tom'
+                };
+            },
+            methods: {
+                increment() {
+                    this.count++;
+                },
+                getFriendsList() {
+                    let self = this;
+                    fetch('@Url.Action("GetFriendsList", "Home")')
+                        .then(response => response.json())
+                        .then(data => self.friends_list = data);
+                },
+                addFriend() {
+                    let self = this;
+                    fetch('@Url.Action("InsertNewFriendInMemory", "Home")',
+                            {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(self.new_friend),
+                            })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data)
+                                self.getFriendsList();
+                        });
+                },
+                removeFriend(username, lastName, name) {
+                    let self = this;
+                    let deleteParameters = {
+                        username: username,
+                        lastName: lastName,
+                        name: name
+                    };
+                    fetch('@Url.Action("RemoveFriend", "Home")',
+                            {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(deleteParameters)
+                            })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data)
+                                self.getFriendsList();
+                        });
+                }
+            },
+            mounted() {
+                console.log(this.count);
+                this.count = 2;
+                const friendList = '@Html.Raw(Json.Serialize(Model.FriendList))';
+                this.friends_list = JSON.parse(friendList);
+            }
+        });
+
+        app.mount('#app');
+    </script>
+}

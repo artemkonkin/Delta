@@ -28,9 +28,4 @@
     <ProjectReference Include="..\UserDomain\UserDomain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Pages\Notes\" />
-  </ItemGroup>
-
 </Project>
