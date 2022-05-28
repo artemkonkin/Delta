@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\EnumsLib\EnumsLib.csproj" />
-  </ItemGroup>
-
 </Project>
