@@ -13,7 +13,7 @@ namespace DbContextLib
         /// <summary>
         /// Notes
         /// </summary>
-        public DbSet<NoteEntity> Notes { get; set; }
+        public DbSet<NoteEntity>? NoteEntity { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)

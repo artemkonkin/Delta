@@ -21,6 +21,7 @@
     <ProjectReference Include="..\BaseRepositoryLib\BaseRepositoryLib.csproj" />
     <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
     <ProjectReference Include="..\NoteDomain\NoteDomain.csproj" />
+    <ProjectReference Include="..\NotesServiceLib\NotesServiceLib.csproj" />
     <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
     <ProjectReference Include="..\ServicesLib\ServicesLib.csproj" />
     <ProjectReference Include="..\UnitOfWork\UnitOfWorkLib.csproj" />

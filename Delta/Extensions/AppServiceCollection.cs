@@ -2,9 +2,9 @@
 using DbContextLib;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using NotesServiceLib;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
-using ServicesLib;
 using UnitOfWorkLib;
 
 namespace Delta.Extensions
