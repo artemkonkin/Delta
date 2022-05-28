@@ -3,7 +3,7 @@ using System.Security.Claims;
 using BaseEntityLib;
 using BaseServiceLib;
 using Microsoft.AspNetCore.Identity;
-using NotesDomain;
+using NoteDomain;
 using RepositoriesLib.Interfaces;
 using UnitOfWorkLib;
 using UserDomain;

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore context-namespace="DbContextLib" schema="dbo" namespace="GuideDomain" p1:Guid="75d7e76c-af1a-4661-a8a2-e0cb74043895" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="$EnumTypes">
+    <EnumType Name="ItemParameterDataType" class="ItemParameterDataType" p1:Guid="ab850b51-0367-4f3e-ac0e-137b3aea37ca">
+      <Member Name="Int" p1:Guid="4103c035-e981-4725-ac1c-bb3125fe9b50" />
+      <Member Name="VarcharMax" p1:Guid="a6d5e796-68b8-4634-8358-8b1d9b87469b" />
+      <Member Name="Datetime" p1:Guid="43688b11-6d1a-4e9e-9a48-991fa45fad3e" />
+    </EnumType>
+  </class>
+  <class name="GuideEntity" entity-set="GuideEntities" schema="dbo" p1:Guid="23e12644-91f9-4a96-a7d8-d00b0cd0e935">
+    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="6910a5d8-6c52-4799-be01-07984ca6ea14">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="02bb76a9-2fdc-495f-9c4c-08bf4e39cf78">
+      <column name="" />
+    </property>
+    <property name="GuidesListId" type="Guid" p1:ValidateRequired="true" p1:Guid="ddb4ba6a-42c9-4bb8-b3f0-05cab38342ad">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="GuideColl" entity-set="GuideColls" schema="dbo" p1:Guid="73157df6-75d4-47ac-bde4-d5d386c9ad3a">
+    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="0744fac1-5412-4c15-882f-c60821f6083e">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="77fd9e79-8aba-4f7c-ae37-17220b9afcac">
+      <column name="" />
+    </property>
+    <property name="DataType" type="GuideDomain.ItemParameterDataType" p1:ValidateRequired="true" p1:Guid="4ecfbfb3-bde7-467a-9e1f-005a8092a032">
+      <column name="" />
+    </property>
+    <property name="GuideEntityId" type="Guid" p1:ValidateRequired="true" p1:Guid="24bd2110-07bb-4bff-86d8-6906bb94baa7">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="GuidesList" entity-set="GuidesLists" schema="dbo" p1:Guid="fc103c48-0a33-4511-a255-014e6f7a6a19">
+    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="e9fde712-0d1b-4869-93e4-d6568c77d038">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="09a03414-9dbf-4bb1-a2fd-15bee6760c0b">
+      <column name="" />
+    </property>
+  </class>
+  <class name="GuideRow" entity-set="GuideRows" schema="dbo" p1:Guid="e9f774df-de75-4798-90ad-9d9abcecbef2">
+    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="f27877db-f620-4d72-91f3-ea48496d369a">
+      <column name="" />
+    </id>
+    <property name="GuideEntityId" type="Guid" p1:ValidateRequired="true" p1:Guid="5469a742-15d1-446e-a826-8762e930a29e">
+      <column name="" not-null="False" />
+    </property>
+  </class>
+  <class name="GuideRowCollData" entity-set="GuideRowCollDatas" schema="dbo" p1:Guid="41ce454c-5cec-4d6f-b457-032919ee58ec">
+    <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="18816bf2-d122-40f1-ba04-f886664a4e59">
+      <column name="" />
+    </id>
+    <property name="RowId" type="Guid" p1:ValidateRequired="true" p1:Guid="1029d42d-1538-4849-9c94-31590122f45f">
+      <column name="" />
+    </property>
+    <property name="CollId" type="Guid" p1:ValidateRequired="true" p1:Guid="587c87ce-98ca-4f6f-84ac-15728804357e">
+      <column name="" />
+    </property>
+    <property name="Value" type="Object" p1:ValidateRequired="true" p1:Guid="94854563-2e0e-49cb-a80d-250c0abd06c7">
+      <column name="" />
+    </property>
+  </class>
+  <associations>
+    <association name="GuidesList_GuideEntity" cardinality="OneToMany" on-delete="Cascade" p1:Guid="4f6ac90a-4973-459e-ad87-e703582d423f">
+      <end1 multiplicity="One" name="GuidesList" class="GuideEntity" relation-class="GuidesList" constrained="True" lazy="False" p1:Guid="e114d9ad-ca8b-44cb-82c9-18dd575aae75">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="GuideEntities" class="GuidesList" relation-class="GuideEntity" lazy="False" p1:Guid="e57092f1-83e6-4df6-8d77-ea641de930d4">
+        <property name="GuidesListId" />
+      </end2>
+    </association>
+    <association name="GuideEntity_GuideRow" cardinality="OneToMany" on-delete="Cascade" p1:Guid="9ba89da4-457e-4fce-91ea-669ab829bd42">
+      <end1 multiplicity="One" name="GuideEntity" class="GuideRow" relation-class="GuideEntity" constrained="True" lazy="False" p1:Guid="c5e1e7d4-0145-4907-9493-7fc01b261b0e">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="GuideRows" class="GuideEntity" relation-class="GuideRow" lazy="False" p1:Guid="7195ba04-ea4e-4782-984e-1f7f3afb6b61">
+        <property name="GuideEntityId" />
+      </end2>
+    </association>
+    <association name="GuideEntity_GuideColl" cardinality="OneToMany" on-delete="Cascade" p1:Guid="cb332081-b488-4ea9-9852-3a0e3531a290">
+      <end1 multiplicity="One" name="GuideEntity" class="GuideColl" relation-class="GuideEntity" constrained="True" lazy="False" p1:Guid="e0a7e4ac-8b58-4243-b61d-dc78ec9f850d">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="GuideColls" class="GuideEntity" relation-class="GuideColl" lazy="False" p1:Guid="02c80091-c010-4ecc-bbe4-e741a78331b4">
+        <property name="GuideEntityId" />
+      </end2>
+    </association>
+    <association name="GuideRowCollData_GuideColl" cardinality="OneToOne" p1:Guid="b930adbc-d426-47ff-a297-9acaad6db137">
+      <end1 multiplicity="One" name="GuideRowCollData" class="GuideColl" relation-class="GuideRowCollData" constrained="True" lazy="False" p1:Guid="89d91d11-417f-4e8b-9756-b7c93b3f336f">
+        <property name="CollId" />
+      </end1>
+      <end2 multiplicity="One" name="GuideColl" class="GuideRowCollData" relation-class="GuideColl" constrained="False" lazy="False" p1:Guid="6ef188c4-d4ce-413f-a186-69b287dadb1f">
+        <property name="Id" />
+      </end2>
+    </association>
+    <association name="GuideRowCollData_GuideRow" cardinality="OneToOne" p1:Guid="399ab38d-6070-41f2-b304-936ce18e69d4">
+      <end1 multiplicity="One" name="GuideRowCollData" class="GuideRow" relation-class="GuideRowCollData" constrained="True" lazy="False" p1:Guid="53273061-6d10-4bc6-8a37-488fcf01bbb9">
+        <property name="RowId" />
+      </end1>
+      <end2 multiplicity="One" name="GuideRow" class="GuideRowCollData" relation-class="GuideRow" constrained="False" lazy="False" p1:Guid="27d0097c-7d6c-4979-90ef-92fdb3780e3f">
+        <property name="Id" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

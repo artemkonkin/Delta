@@ -1,7 +1,7 @@
 ﻿using BaseEntityLib;
 using BaseRepositoryLib;
 using DbContextLib;
-using NotesDomain;
+using NoteDomain;
 using RepositoriesLib.Interfaces;
 
 namespace RepositoriesLib

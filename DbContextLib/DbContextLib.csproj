@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GuideDomain\GuideDomain.csproj" />
     <ProjectReference Include="..\NoteDomain\NoteDomain.csproj" />
   </ItemGroup>
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntityLib;
 using UserDomain;
 
-namespace NotesDomain
+namespace NoteDomain
 {
     [Table("Notes")]
     public partial class NoteEntity : IBaseEntity<Guid>

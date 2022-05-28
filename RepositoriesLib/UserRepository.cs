@@ -17,7 +17,7 @@ namespace RepositoriesLib
 
             if (user.ValidOnAdd())
             {
-                this.Add(user);
+                Add(user);
                 return user;
             }
             else
