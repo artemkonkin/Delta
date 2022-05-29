@@ -7,6 +7,7 @@ namespace GuideDomain.Guide
     /// <summary>
     /// Guide col
     /// </summary>
+    [Table("GuidesCols")]
     public class GuideCol : IBaseEntity<Guid>
     {
         [Key]
@@ -16,6 +17,8 @@ namespace GuideDomain.Guide
         /// <summary>
         /// Coll name
         /// </summary>
+        [Required]
+        [MaxLength(64)]
         public virtual string Name { get; set; }
 
         /// <summary>
@@ -24,14 +27,9 @@ namespace GuideDomain.Guide
         public virtual ItemParameterDataType DataType { get; set; }
 
         /// <summary>
-        /// Guide id
-        /// </summary>
-        public virtual Guid GuideEntityId { get; set; }
-        public virtual GuideEntity GuideEntity { get; set; }
-
-        /// <summary>
         /// CollData
         /// </summary>
-        public virtual GuideRowCollData GuideRowCollData { get; set; }
+        [ForeignKey("GuideColId")]
+        public virtual ICollection<GuideRowColData> GuideRowColData { get; set; }
     }
 }

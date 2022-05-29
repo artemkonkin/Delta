@@ -7,7 +7,7 @@
       <Member Name="Datetime" p1:Guid="43688b11-6d1a-4e9e-9a48-991fa45fad3e" />
     </EnumType>
   </class>
-  <class name="GuideEntity" entity-set="GuideEntities" schema="dbo" p1:Guid="23e12644-91f9-4a96-a7d8-d00b0cd0e935">
+  <class name="GuideEntity" entity-set="GuideEntities" p1:Guid="23e12644-91f9-4a96-a7d8-d00b0cd0e935">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="6910a5d8-6c52-4799-be01-07984ca6ea14">
       <column name="" />
     </id>
@@ -18,7 +18,7 @@
       <column name="" not-null="False" />
     </property>
   </class>
-  <class name="GuideColl" entity-set="GuideColls" schema="dbo" p1:Guid="73157df6-75d4-47ac-bde4-d5d386c9ad3a">
+  <class name="GuideColl" entity-set="GuideColls" p1:Guid="73157df6-75d4-47ac-bde4-d5d386c9ad3a">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="0744fac1-5412-4c15-882f-c60821f6083e">
       <column name="" />
     </id>
@@ -32,7 +32,7 @@
       <column name="" not-null="False" />
     </property>
   </class>
-  <class name="GuidesList" entity-set="GuidesLists" schema="dbo" p1:Guid="fc103c48-0a33-4511-a255-014e6f7a6a19">
+  <class name="GuidesList" entity-set="GuidesLists" p1:Guid="fc103c48-0a33-4511-a255-014e6f7a6a19">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="e9fde712-0d1b-4869-93e4-d6568c77d038">
       <column name="" />
     </id>
@@ -40,7 +40,7 @@
       <column name="" />
     </property>
   </class>
-  <class name="GuideRow" entity-set="GuideRows" schema="dbo" p1:Guid="e9f774df-de75-4798-90ad-9d9abcecbef2">
+  <class name="GuideRow" entity-set="GuideRows" p1:Guid="e9f774df-de75-4798-90ad-9d9abcecbef2">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="f27877db-f620-4d72-91f3-ea48496d369a">
       <column name="" />
     </id>
@@ -48,7 +48,7 @@
       <column name="" not-null="False" />
     </property>
   </class>
-  <class name="GuideRowCollData" entity-set="GuideRowCollDatas" schema="dbo" p1:Guid="41ce454c-5cec-4d6f-b457-032919ee58ec">
+  <class name="GuideRowCollData" entity-set="GuideRowCollDatas" p1:Guid="41ce454c-5cec-4d6f-b457-032919ee58ec">
     <id name="Id" type="Guid" p1:ValidateRequired="true" p1:Guid="18816bf2-d122-40f1-ba04-f886664a4e59">
       <column name="" />
     </id>

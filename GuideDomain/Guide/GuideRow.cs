@@ -14,11 +14,23 @@ namespace GuideDomain.Guide
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public ICollection<GuideCol> Colls { get; set; }
-        public virtual Guid GuideEntityId { get; set; }
+        /// <summary>
+        /// Cols
+        /// </summary>
+        public virtual ICollection<GuideCol> Cols { get; set; }
 
-        public virtual GuideEntity GuideEntity { get; set; }
+        /// <summary>
+        /// Guide
+        /// </summary>
+        [Required]
+        [ForeignKey("GuideId")]
+        public Guid GuideId { get; set; }
+        public virtual GuideEntity Guide { get; set; }
 
-        public virtual GuideRowCollData GuideRowCollData { get; set; }
+        /// <summary>
+        /// Row - Col data
+        /// </summary>
+        [ForeignKey("GuideRowId")]
+        public virtual ICollection<GuideRowColData> GuideRowColData { get; set; }
     }
 }

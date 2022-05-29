@@ -7,12 +7,12 @@ namespace GuideDomain.Guide
     /// <summary>
     /// Guide entity
     /// </summary>
+    [Table("Guides")]
     public class GuideEntity : IBaseEntity<Guid>
     {
         public GuideEntity()
         {
             GuideRows = new List<GuideRow>();
-            GuideCols = new List<GuideCol>();
         }
 
         [Key]
@@ -22,22 +22,22 @@ namespace GuideDomain.Guide
         /// <summary>
         /// Guide name
         /// </summary>
+        [Required]
+        [MaxLength(128)]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Guide list
         /// </summary>
-        public virtual Guid GuidesListId { get; set; }
-        public virtual GuidesList GuidesList { get; set; }
+        [Required]
+        [ForeignKey("GuideListId")]
+        public virtual Guid GuideListId { get; set; }
+        public virtual GuidesList GuideList { get; set; }
 
         /// <summary>
         /// Rows
         /// </summary>
-        public virtual IList<GuideRow> GuideRows { get; set; }
-
-        /// <summary>
-        /// Colls
-        /// </summary>
-        public virtual IList<GuideCol> GuideCols { get; set; }
+        [ForeignKey("GuideRowId")]
+        public virtual ICollection<GuideRow> GuideRows { get; set; }
     }
 }

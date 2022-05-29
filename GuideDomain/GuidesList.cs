@@ -8,6 +8,7 @@ namespace GuideDomain
     /// <summary>
     /// Guides list
     /// </summary>
+    [Table("GuidesLists")]
     public class GuidesList : IBaseEntity<Guid>
     {
         public GuidesList()
@@ -22,11 +23,14 @@ namespace GuideDomain
         /// <summary>
         /// Guide name
         /// </summary>
+        [Required]
+        [MaxLength(128)]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Guides list
         /// </summary>
-        public virtual IList<GuideEntity> GuideEntities { get; set; }
+        [ForeignKey("GuideListId")]
+        public virtual ICollection<GuideEntity> GuideEntities { get; set; }
     }
 }

@@ -6,27 +6,34 @@ namespace GuideDomain.Guide
     /// <summary>
     /// Guide row data
     /// </summary>
-    public class GuideRowCollData
+    [Table("GuidesRowsColsData")]
+    public class GuideRowColData
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual Guid Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Row
         /// </summary>
-        public virtual Guid RowId { get; set; }
+        [Required]
+        [ForeignKey("GuideRowId")]
+        public virtual Guid GuideRowId { get; set; }
         public virtual GuideRow GuideRow { get; set; }
 
         /// <summary>
         /// Col
         /// </summary>
-        public virtual Guid CollId { get; set; }
+        [Required]
+        [ForeignKey("GuideColId")]
+        public virtual Guid GuideColId { get; set; }
         public virtual GuideCol GuideCol { get; set; }
 
         /// <summary>
         /// Value
         /// </summary>
+        [Required]
+        [Column("Value", TypeName = "sql_variant")]
         public virtual object Value { get; set; }
 
     }

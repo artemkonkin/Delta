@@ -2,7 +2,17 @@
 <EntityDeveloper Version="6.6.894.0">
   <ModelSettings xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ConnectionStringInAppConfig="False" DetectManyToManyAssociations="False" DetectTPTInheritance="False" EntityFrameworkCoreVersion="Version3" UseLazyLoadingProxies="True" DetectFunctionBasedColumnDefault="True">
     <Connection ConnectionString="" Provider="" />
-    <Generation />
+    <Generation>
+      <GeneratedFiles>
+        <File Name="GuideEntity.Model.cs" />
+        <File Name="GuideEntity.GuideEntity.cs" />
+        <File Name="GuideEntity.GuideColl.cs" />
+        <File Name="GuideEntity.GuidesList.cs" />
+        <File Name="GuideEntity.GuideRow.cs" />
+        <File Name="GuideEntity.GuideRowCollData.cs" />
+        <File Name="GuideEntity.ItemParameterDataType.cs" />
+      </GeneratedFiles>
+    </Generation>
     <DatabaseFirstNamingRules>
       <EntitySet PluralizationName="Pluralize" />
       <Class UseSchemaAsPrefix="False" PluralizeCollectionNavigationPropertyName="True" AddConstraintColumnsToNavigationPropertyName="False" RemoveUnderscores="True" AddUnderscores="False" RemoveInvalidCharacters="True" CodeCase="FirstLetterUppercase" AddPrefix="" AddSuffix="" RemovePrefixes="" RemoveSuffixes="" PluralizationName="Singularize" />
