@@ -27,4 +27,12 @@
     <ProjectReference Include="..\UserDomain\UserDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Guide\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Guide\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

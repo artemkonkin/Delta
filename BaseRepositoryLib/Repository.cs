@@ -10,11 +10,19 @@ namespace BaseRepositoryLib
         private readonly DbFactory _dbFactory;
         private DbSet<T> _dbSet;
 
-        private DbSet<T> DbSet => _dbSet ??= _dbFactory.DbContext.Set<T>();
+        protected DbSet<T> DbSet
+        {
+            get => _dbSet ?? (_dbSet = _dbFactory.DbContext.Set<T>());
+        }
 
         public Repository(DbFactory dbFactory)
         {
             _dbFactory = dbFactory;
+        }
+
+        public IQueryable<T> Get(Expression<Func<T, bool>> expression)
+        {
+            return DbSet.Where(expression);
         }
 
         public void Add(T entity)
@@ -37,7 +45,7 @@ namespace BaseRepositoryLib
                 DbSet.Remove(entity);
         }
 
-        public IQueryable<T> Get(Expression<Func<T, bool>> expression)
+        public IQueryable<T> List(Expression<Func<T, bool>> expression)
         {
             return DbSet.Where(expression);
         }

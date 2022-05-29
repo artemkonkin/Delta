@@ -1,4 +1,4 @@
-﻿namespace GuideDomain.Guide
+﻿namespace EnumsLib
 {
     /// <summary>
     /// Col data types

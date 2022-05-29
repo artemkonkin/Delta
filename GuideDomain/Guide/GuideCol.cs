@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntityLib;
+using EnumsLib;
 
 namespace GuideDomain.Guide
 {

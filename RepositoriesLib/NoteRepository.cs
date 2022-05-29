@@ -1,6 +1,7 @@
 ﻿using BaseEntityLib;
 using BaseRepositoryLib;
 using DbContextLib;
+using EnumsLib;
 using NoteDomain;
 using RepositoriesLib.Interfaces;
 

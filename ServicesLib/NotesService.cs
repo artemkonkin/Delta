@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using BaseEntityLib;
 using BaseServiceLib;
+using EnumsLib;
 using Microsoft.AspNetCore.Identity;
 using NoteDomain;
 using RepositoriesLib.Interfaces;

@@ -1,6 +1,6 @@
 ﻿namespace ServicesLib.Guide
 {
-    internal class GuideListFactory
+    public class GuideListFactory
     {
     }
 }

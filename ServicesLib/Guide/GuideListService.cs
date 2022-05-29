@@ -1,21 +1,24 @@
 ﻿using BaseEntityLib;
-using BaseServiceLib;
 using GuideDomain;
 using GuideDomain.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using RepositoriesLib;
+using RepositoriesLib.Interfaces.Guide;
 using UnitOfWorkLib;
 using UserDomain;
 
 namespace ServicesLib.Guide
 {
-    internal class GuideListService : BaseService
+    public class GuideListService : IGuideListService
     {
-        private readonly GuideRepository _guideRepository;
+        private readonly IUnitOfWork _uow;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IGuideListRepository _guideListRepository;
 
-        public GuideListService(IUnitOfWork uow, UserManager<AppUser> userManager, GuideRepository guideRepository) : base(uow, userManager)
+        public GuideListService(IUnitOfWork uow, UserManager<AppUser> userManager, IGuideListRepository guideListRepository)
         {
-            _guideRepository = guideRepository;
+            _uow = uow;
+            _userManager = userManager;
+            _guideListRepository = guideListRepository;
         }
 
         /// <summary>
@@ -24,7 +27,7 @@ namespace ServicesLib.Guide
         /// <returns></returns>
         public IQueryable<GuidesList> GetAllGuidesLists()
         {
-            return _guideRepository.GetAllGuidesLists();
+            return _guideListRepository.GetAllGuidesLists();
         }
 
         /// <summary>
@@ -34,7 +37,7 @@ namespace ServicesLib.Guide
         /// <returns></returns>
         public Response<GuidesList> GetGuideListById(Guid guideListId)
         {
-            var guideList = _guideRepository.GetGuideListById(guideListId);
+            var guideList = _guideListRepository.GetGuideListById(guideListId);
             return guideList;
         }
 
@@ -46,7 +49,7 @@ namespace ServicesLib.Guide
         public ReadGuideListVm GetGuideListWithData(Guid guideListId)
         {
             //todo Доделать
-            var guideList = _guideRepository.GetGuideListById(guideListId);
+            var guideList = _guideListRepository.GetGuideListById(guideListId);
 
             return new ReadGuideListVm
             {
@@ -63,7 +66,7 @@ namespace ServicesLib.Guide
         /// <returns></returns>
         public Response<GuidesList> AddGuideList(GuidesList guideListEntity)
         {
-            var result = _guideRepository.AddGuideList(guideListEntity);
+            var result = _guideListRepository.AddGuideList(guideListEntity);
             return result;
         }
 
@@ -74,7 +77,7 @@ namespace ServicesLib.Guide
         /// <returns></returns>
         public Response<GuidesList> UpdateGuideList(GuidesList guideListEntity)
         {
-            var result = _guideRepository.UpdateGuidesList(guideListEntity);
+            var result = _guideListRepository.UpdateGuidesList(guideListEntity);
             return result;
         }
 
@@ -86,7 +89,7 @@ namespace ServicesLib.Guide
         /// <returns></returns>
         public Response<GuidesList> UpdateGuideList(Guid guideListId, string guideListName)
         {
-            var result = _guideRepository.RenameGuideList(guideListId, guideListName);
+            var result = _guideListRepository.RenameGuideList(guideListId, guideListName);
             return result;
         }
 
@@ -97,7 +100,7 @@ namespace ServicesLib.Guide
         /// <returns></returns>
         public Response<GuidesList> DeleteGuideList(Guid guideListId)
         {
-            var result = _guideRepository.DeleteGuideList(guideListId);
+            var result = _guideListRepository.DeleteGuideList(guideListId);
             return result;
         }
     }

@@ -1,20 +1,24 @@
 ﻿using Delta.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using RepositoriesLib.Interfaces;
+using UserDomain;
 
 namespace Delta.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly INoteRepository _noteRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(INoteRepository noteRepository, UserManager<AppUser>? userManager) : base(userManager)
         {
-            _logger = logger;
+            _noteRepository = noteRepository;
         }
 
         public IActionResult Index()
         {
+            _noteRepository.GetUserNotes(GetUserId());
             return View();
         }
 
