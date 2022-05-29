@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
+using RepositoriesLib.Interfaces.Guide;
 using ServicesLib;
 using UnitOfWorkLib;
 
@@ -32,6 +33,7 @@ namespace Delta.Extensions
             builder.Services
                 .AddScoped(typeof(IRepository<>), typeof(Repository<>))
                 .AddScoped<IUserRepository, UserRepository>()
+                .AddScoped<IGuideRepository, GuideRepository>()
                 .AddScoped<INoteRepository, NoteRepository>();
         }
 

@@ -1,4 +1,5 @@
-﻿using BaseRepositoryLib;
+﻿using BaseEntityLib;
+using BaseRepositoryLib;
 using DbContextLib;
 using GuideDomain;
 using GuideDomain.Guide;
@@ -18,17 +19,25 @@ namespace RepositoriesLib
         /// <returns></returns>
         public IQueryable<GuidesList> GetAllGuidesLists()
         {
-            throw new NotImplementedException();
+            return Get(lists => true);
         }
 
         /// <summary>
         /// Get guide list
         /// </summary>
-        /// <param name="id"> Guide list id </param>
+        /// <param name="guideListId"> Guide list id </param>
         /// <returns></returns>
-        public GuidesList GetGuideList(Guid id)
+        public Response<GuidesList> GetGuideListById(Guid guideListId)
         {
-            throw new NotImplementedException();
+            var result = Get(lists => lists.Id == guideListId);
+            return new Response<GuidesList>
+            {
+                Status = ResponseStatus.Success,
+                Data = result.Any() 
+                    ? result.First() 
+                    : throw new Exception($"Guide list {guideListId} not fount."),
+                Message = null
+            };
         }
 
         /// <summary>
@@ -36,9 +45,16 @@ namespace RepositoriesLib
         /// </summary>
         /// <param name="guideListEntity"> Guide list entity </param>
         /// <returns></returns>
-        public GuidesList AddGuideList(GuidesList guideListEntity)
+        public Response<GuidesList> AddGuideList(GuidesList guideListEntity)
         {
-            throw new NotImplementedException();
+            Add(guideListEntity);
+            
+            return new Response<GuidesList>
+            {
+                Status = ResponseStatus.Success,
+                Data = guideListEntity,
+                Message = null
+            };
         }
 
         /// <summary>
@@ -46,9 +62,21 @@ namespace RepositoriesLib
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public GuidesList AddEmptyGuideList(string name)
+        public Response<GuidesList> AddEmptyGuideList(string name)
         {
-            throw new NotImplementedException();
+            var newList = new GuidesList
+            {
+                Name = name
+            };
+            
+            Add(newList);
+
+            return new Response<GuidesList>
+            {
+                Status = ResponseStatus.Success,
+                Data = newList,
+                Message = null
+            };
         }
 
         /// <summary>
@@ -56,9 +84,16 @@ namespace RepositoriesLib
         /// </summary>
         /// <param name="guideListEntity"> Guide list entity </param>
         /// <returns></returns>
-        public GuidesList EditGuidesList(GuidesList guideListEntity)
+        public Response<GuidesList> UpdateGuidesList(GuidesList guideListEntity)
         {
-            throw new NotImplementedException();
+            Update(guideListEntity);
+
+            return new Response<GuidesList>
+            {
+                Status = ResponseStatus.Success,
+                Data = guideListEntity,
+                Message = null
+            };
         }
 
         /// <summary>
@@ -67,9 +102,30 @@ namespace RepositoriesLib
         /// <param name="id"> Guide list id </param>
         /// <param name="name"> Guide list name </param>
         /// <returns></returns>
-        public GuidesList RenameGuideList(Guid id, string name)
+        public Response<GuidesList> RenameGuideList(Guid id, string name)
         {
-            throw new NotImplementedException();
+            var guideList = Get(x => x.Id == id);
+            
+            if (!guideList.Any()) 
+                throw new Exception($"Guide list {id} not fount.");
+            
+            var list = guideList.First();
+
+            var updatedList = new GuidesList
+            {
+                Id = list.Id,
+                Name = name,
+                GuideEntities = list.GuideEntities
+            };
+
+            Update(updatedList);
+
+            return new Response<GuidesList>
+            {
+                Status = ResponseStatus.Success,
+                Data = updatedList,
+                Message = null
+            };
         }
 
         /// <summary>
@@ -77,9 +133,22 @@ namespace RepositoriesLib
         /// </summary>
         /// <param name="id"> Guide list id </param>
         /// <returns></returns>
-        public IQueryable<GuidesList> DeleteGuideList(Guid id)
+        public Response<GuidesList> DeleteGuideList(Guid id)
         {
-            throw new NotImplementedException();
+            var guideList = Get(x => x.Id == id);
+            if (!guideList.Any())
+                throw new Exception($"Guide list {id} not fount.");
+
+            var deletedGuideList = guideList.First();
+
+            Delete(deletedGuideList);
+
+            return new Response<GuidesList>
+            {
+                Status = ResponseStatus.Success,
+                Data = deletedGuideList,
+                Message = null
+            };
         }
 
         /// <summary>
