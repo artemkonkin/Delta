@@ -31,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoriesLib", "Reposito
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLib", "ServicesLib\ServicesLib.csproj", "{0542146C-6365-4C3C-9300-A7999E68AA7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideDomain", "GuideDomain\GuideDomain.csproj", "{A2E8B8C8-681E-4CF2-BF1F-239B0CA8A904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuideDomain", "GuideDomain\GuideDomain.csproj", "{A2E8B8C8-681E-4CF2-BF1F-239B0CA8A904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumsLib", "EnumsLib\EnumsLib.csproj", "{C6778C45-2F55-4FAA-AB65-428CB59F98A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumsLib", "EnumsLib\EnumsLib.csproj", "{C6778C45-2F55-4FAA-AB65-428CB59F98A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaAPI", "DeltaAPI\DeltaAPI.csproj", "{65DF8115-B786-4873-B45D-C6E423C81796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{C6778C45-2F55-4FAA-AB65-428CB59F98A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6778C45-2F55-4FAA-AB65-428CB59F98A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6778C45-2F55-4FAA-AB65-428CB59F98A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DF8115-B786-4873-B45D-C6E423C81796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DF8115-B786-4873-B45D-C6E423C81796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DF8115-B786-4873-B45D-C6E423C81796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DF8115-B786-4873-B45D-C6E423C81796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

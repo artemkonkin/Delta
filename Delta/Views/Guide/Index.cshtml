@@ -189,9 +189,11 @@
 
 <div id="guide-list-test">
     <p>
-        {{ data.login }}
+        {{ data }}
+        <br/>
         {{ data.id }}
-        {{ data.avatar_url }}
+        <br/>
+        {{ data.name }}
     </p>
 </div>
 
@@ -205,7 +207,7 @@
             };
         },
         mounted() {
-            window.axios.get("https://api.github.com/users/mapbox")
+            window.axios.get("https://localhost:7143/Guide/GetGuidesLists")
                 .then((response) => {
                     this.data = response.data;
                 });

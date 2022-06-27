@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
 using RepositoriesLib.Interfaces.Guide;
-using ServicesLib;
 using ServicesLib.Guide;
 using UnitOfWorkLib;
 using UserDomain;

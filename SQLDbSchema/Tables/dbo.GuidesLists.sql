@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [dbo].[GuidesLists] (
-  [Id] [uniqueidentifier] NOT NULL,
-  [Name] [nvarchar](128) NOT NULL,
-  CONSTRAINT [PK_GuidesLists] PRIMARY KEY CLUSTERED ([Id])
-)
-ON [PRIMARY]
-GO
+    [Id]   UNIQUEIDENTIFIER NOT NULL IDENTITY,
+    [Name] NVARCHAR (128)   NOT NULL,
+    CONSTRAINT [PK_GuidesLists] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
