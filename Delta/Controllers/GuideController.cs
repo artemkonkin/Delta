@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GuideDomain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RepositoriesLib.Interfaces.Guide;
 using ServicesLib.Guide;
@@ -19,11 +20,7 @@ namespace Delta.Controllers
 
         public IActionResult Index()
         {
-            var guidesList = _guideListRepository.GetAllGuidesLists();
-            var gl = _guideListService.GetAllGuidesLists();
-
-            guidesList = gl;
-
+            var guidesList = _guideListService.GetAllGuidesLists();
             return View(guidesList);
         }
 

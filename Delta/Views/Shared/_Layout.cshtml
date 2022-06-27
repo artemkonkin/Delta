@@ -11,15 +11,17 @@
     <link rel="stylesheet" href="~/lib/flowbite.css"/>
     <script src="~/lib/tailwind.js"></script>
     <script src="~/lib/flowbite.js"></script>
+    <script src="~/lib/vue.global.prod.js"></script>
+    <script src="~/lib/axios.min.js"></script>
 </head>
 <body>
 
-<div class="container flex h-full flex-row gap-6" style="height: 100vh;">
+<div class="flex h-full w-full flex-row gap-6" style="height: 100vh;">
     <div class="flex h-full flex-col gap-6">
         <aside class="h-full w-64" aria-label="Sidebar">
             <div class="h-full overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="flex items-center pl-2.5 mb-5">
-                    <img src="~/img/logo/logo.svg" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo">
+                    DELTA
                 </a>
 
                 <partial name="_MenuItemspartial"/>
@@ -28,13 +30,13 @@
             </div>
         </aside>
     </div>
-    <div>
-        <div>
-            <main role="main">
+    <div class="flex w-full flex-col pr-6">
+        <div class="flex w-full flex-col">
+            <main role="main" class="flex w-full flex-col gap-3">
                 @RenderBody()
             </main>
         </div>
-        <div>
+        <div class="flex w-full">
             &copy; 2022 - Delta - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </div>
