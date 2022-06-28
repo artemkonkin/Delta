@@ -32,6 +32,7 @@ namespace BaseRepositoryLib
                 ((IAuditEntity)entity).CreatedDate = DateTime.UtcNow;
             }
             DbSet.Add(entity);
+            _dbFactory.DbContext.SaveChanges();
         }
 
         public void Delete(T entity)
@@ -40,9 +41,14 @@ namespace BaseRepositoryLib
             {
                 ((IDeleteEntity)entity).IsDeleted = true;
                 DbSet.Update(entity);
+                _dbFactory.DbContext.SaveChanges();
             }
             else
+            {
                 DbSet.Remove(entity);
+                _dbFactory.DbContext.SaveChanges();
+            }
+                
         }
 
         public IQueryable<T> List(Expression<Func<T, bool>> expression)
@@ -57,6 +63,7 @@ namespace BaseRepositoryLib
                 ((IAuditEntity)entity).UpdatedDate = DateTime.UtcNow;
             }
             DbSet.Update(entity);
+            _dbFactory.DbContext.SaveChanges();
         }
     }
 }

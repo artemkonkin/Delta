@@ -47,17 +47,19 @@ namespace Delta.Controllers.Guides
         /// Get guide lists
         /// </summary>
         /// <returns> Guides lists </returns>
+        [HttpGet]
+        [Produces("application/json")]
         public IActionResult GetGuidesLists()
         {
             var guidesList = _guideListService.GetAllGuidesLists();
-            return Ok(guidesList);
+            return Json(guidesList.ToList());
         }
 
         /// <summary>
         /// Add guide list
         /// </summary>
         /// <param name="guideListName"> Guides lists name </param>
-        [HttpGet]
+        [HttpPost]
         [Produces("application/json")]
         public IActionResult CreateGuideList(string guideListName)
         {
@@ -68,7 +70,21 @@ namespace Delta.Controllers.Guides
 
             var response = _guideListService.AddGuideList(newGuideList);
 
-            return Ok(response);
+            return Json(response);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteGuidesList(Guid guid)
+        {
+            var response = _guideListService.DeleteGuideList(guid);
+            return Json(response);
+        }
+
+        [HttpPost]
+        public IActionResult EditGuidesList(GuidesList entity)
+        {
+            var response = _guideListService.UpdateGuideList(entity);
+            return Json(response);
         }
     }
 }
