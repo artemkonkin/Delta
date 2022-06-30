@@ -11,9 +11,7 @@ using UserDomain;
 
 // Δ Delta
 
-
 var builder = WebApplication.CreateBuilder(args);
-
 var conStrBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("DeltaConnectionString"));
 var connection = conStrBuilder.ConnectionString;
 
@@ -22,6 +20,7 @@ builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireCo
     .AddEntityFrameworkStores<AppDbContext>();
 
 // MVC
+
 builder.Services.AddControllersWithViews();
 
 // REPOSITORIES
