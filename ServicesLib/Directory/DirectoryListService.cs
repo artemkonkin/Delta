@@ -6,7 +6,7 @@ using RepositoriesLib.Interfaces.Directory;
 using UnitOfWorkLib;
 using UserDomain;
 
-namespace DirectoriesLib.Directory
+namespace ServicesLib.Directory
 {
     public class DirectoryListService : IDirectoryListService
     {

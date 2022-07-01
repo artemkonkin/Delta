@@ -1,11 +1,11 @@
 using BaseRepositoryLib;
 using DbContextLib;
-using DirectoriesLib.Directory;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
 using RepositoriesLib.Interfaces.Directory;
+using ServicesLib.Directory;
 using UnitOfWorkLib;
 using UserDomain;
 

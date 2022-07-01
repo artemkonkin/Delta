@@ -1,8 +1,8 @@
 ﻿using BaseRepositoryLib;
 using DbContextLib;
-using DirectoriesLib;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using NotesServiceLib;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
 using RepositoriesLib.Interfaces.Directory;

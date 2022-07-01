@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BaseServiceLib\BaseServiceLib.csproj" />
+    <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DirectoryDomain">
+      <HintPath>..\DirectoryDomain\bin\Debug\net6.0\DirectoryDomain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

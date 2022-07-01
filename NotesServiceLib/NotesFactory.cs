@@ -1,5 +1,4 @@
 ﻿using FactoryServiceLib;
-using NotesDomain;
 
 namespace NotesServiceLib
 {

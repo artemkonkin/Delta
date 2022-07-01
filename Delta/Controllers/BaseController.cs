@@ -10,9 +10,9 @@ namespace Delta.Controllers
     /// </summary>
     public abstract class BaseController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<AppUser>? _userManager;
 
-        protected BaseController(UserManager<AppUser> userManager)
+        protected BaseController(UserManager<AppUser>? userManager)
         {
             _userManager = userManager;
         }

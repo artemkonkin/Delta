@@ -1,10 +1,9 @@
 ﻿using DbContextLib;
-using Delta.Controllers.Base;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NotesDomain;
+using NoteDomain;
 using NotesServiceLib;
 using UserDomain;
 
@@ -15,8 +14,8 @@ namespace Delta.Controllers.Notes
         private readonly AppDbContext _context;
         private readonly NotesService _notesService;
 
-        public NotesController(AppDbContext context, NotesService notesService, ILogger<HomeController> logger, UserManager<AppUser>? userManager) 
-            : base(logger, userManager)
+        public NotesController(AppDbContext context, NotesService notesService, ILogger<HomeController> manager, UserManager<AppUser>? userManager) 
+            : base(userManager)
         {
             _context = context;
             _notesService = notesService;
@@ -25,19 +24,19 @@ namespace Delta.Controllers.Notes
         // GET: Notes
         public IActionResult Index()
         {
-            var userNotes = _notesService.GetUserNotes(CurrentUserId);
+            var userNotes = _notesService.GetUserNotes(GetUserId());
             return View(userNotes);
         }
 
         // GET: Notes/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
-            if (id == null || _context.NoteEntity == null)
+            if (id == null || _context.Notes == null)
             {
                 return NotFound();
             }
 
-            var noteEntity = await _context.NoteEntity
+            var noteEntity = await _context.Notes
                 .Include(n => n.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (noteEntity == null)
@@ -76,12 +75,12 @@ namespace Delta.Controllers.Notes
         // GET: Notes/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
-            if (id == null || _context.NoteEntity == null)
+            if (id == null || _context.Notes == null)
             {
                 return NotFound();
             }
 
-            var noteEntity = await _context.NoteEntity.FindAsync(id);
+            var noteEntity = await _context.Notes.FindAsync(id);
             if (noteEntity == null)
             {
                 return NotFound();
@@ -129,12 +128,12 @@ namespace Delta.Controllers.Notes
         // GET: Notes/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
-            if (id == null || _context.NoteEntity == null)
+            if (id == null || _context.Notes == null)
             {
                 return NotFound();
             }
 
-            var noteEntity = await _context.NoteEntity
+            var noteEntity = await _context.Notes
                 .Include(n => n.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (noteEntity == null)
@@ -150,14 +149,14 @@ namespace Delta.Controllers.Notes
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            if (_context.NoteEntity == null)
+            if (_context.Notes == null)
             {
                 return Problem("Entity set 'AppDbContext.NoteEntity'  is null.");
             }
-            var noteEntity = await _context.NoteEntity.FindAsync(id);
+            var noteEntity = await _context.Notes.FindAsync(id);
             if (noteEntity != null)
             {
-                _context.NoteEntity.Remove(noteEntity);
+                _context.Notes.Remove(noteEntity);
             }
             
             await _context.SaveChangesAsync();
@@ -166,7 +165,7 @@ namespace Delta.Controllers.Notes
 
         private bool NoteEntityExists(Guid id)
         {
-          return (_context.NoteEntity?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Notes?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

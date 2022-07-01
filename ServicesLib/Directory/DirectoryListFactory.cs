@@ -1,4 +1,4 @@
-﻿namespace DirectoriesLib.Directory
+﻿namespace ServicesLib.Directory
 {
     public class DirectoryListFactory
     {
