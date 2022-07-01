@@ -7,16 +7,14 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 
     <link rel="stylesheet" href="~/lib/tailwind.css"/>
-    <link rel="stylesheet" href="~/lib/flowbite.css"/>
+    <link rel="stylesheet" href="~/lib/fontAwesome.css"/>
+    <link rel="stylesheet" href="~/lib/interFont.css"/>
+    <link rel="stylesheet" href="~/lib/tailwindElements.css"/>
+    <link rel="stylesheet" href="~/lib/tw-icons.css"/>
     <script src="~/lib/vue.global.prod.js"></script>
     <script src="~/lib/axios.min.js"></script>
+    <script src="~/lib/tailwindElements.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -30,25 +28,20 @@
     </script>
 
 </head>
-<body>
+<body class="bg-gray-100">
 
-<div class="flex h-full w-full flex-row gap-6" style="height: 100vh;">
-    <div class="flex h-full flex-col gap-6">
-        <aside class="h-full w-64" aria-label="Sidebar">
-            <div class="h-full overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="flex items-center pl-2.5 mb-5">
-                    DELTA
-                </a>
-
+<div class="flex h-full w-full flex-row" style="height: 100vh;">
+    <div class="flex h-full flex-col">
+        <aside class="h-full w-80" aria-label="Sidebar">
+            <div class="h-full overflow-y-auto bg-gray-50 rounded dark:bg-gray-800">
                 <partial name="_MenuItemspartial"/>
                 <partial name="_LoginPartial"/>
-
             </div>
         </aside>
     </div>
-    <div class="flex w-full flex-col pr-6">
+    <div class="flex w-full flex-col bg-white p-6 m-4 rounded-lg shadow-md">
         <div class="flex w-full flex-col">
-            <main role="main" class="flex w-full flex-col gap-3">
+            <main role="main" class="flex w-full flex-col gap-6">
                 @RenderBody()
             </main>
         </div>
@@ -59,7 +52,9 @@
 </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/tw-elements.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+
 @await RenderSectionAsync("Scripts", required: false)
 
 </body>

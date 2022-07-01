@@ -12,7 +12,7 @@
     .md { }
 </style>
 
-<div id="guideListViewModel">
+<div id="directoryListViewModel">
 
     <h3 class="text-4xl font-bold dark:text-white"> @ViewBag.Title </h3>
     
@@ -277,7 +277,7 @@
                 window.axios({
                     method: 'POST',
                     url: '/Directory/CreateDirectoryList',
-                    params: { guideListName: this.directoryName }
+                    params: { directoryListName: this.directoryName }
                 }).then((response) => {
                     console.log(response.data);
                     this.getDirectoriesLists();
@@ -306,11 +306,11 @@
         }
     };
 
+    Vue.createApp(DirectoryList).mount('#directoryListViewModel');
+
 </script>
 
 <script>
-    
-    Vue.createApp(DirectoryList).mount('#directoryListViewModel');
 
     // Another
     Vue.createApp({
