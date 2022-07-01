@@ -20,19 +20,16 @@
   <ItemGroup>
     <ProjectReference Include="..\BaseRepositoryLib\BaseRepositoryLib.csproj" />
     <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
+    <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
     <ProjectReference Include="..\NoteDomain\NoteDomain.csproj" />
     <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
-    <ProjectReference Include="..\ServicesLib\ServicesLib.csproj" />
+    <ProjectReference Include="..\ServicesLib\DirectoriesLib.csproj" />
     <ProjectReference Include="..\UnitOfWork\UnitOfWorkLib.csproj" />
     <ProjectReference Include="..\UserDomain\UserDomain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Guide\Index.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Guide\Index.cshtml" />
+    <UpToDateCheckInput Remove="Views\Directory\Index.cshtml" />
   </ItemGroup>
 
 </Project>

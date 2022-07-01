@@ -29,13 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteDomain", "NoteDomain\No
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoriesLib", "RepositoriesLib\RepositoriesLib.csproj", "{EE525C0D-F0A5-4E5B-91FA-610E8D51597A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLib", "ServicesLib\ServicesLib.csproj", "{0542146C-6365-4C3C-9300-A7999E68AA7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoriesLib", "ServicesLib\DirectoriesLib.csproj", "{0542146C-6365-4C3C-9300-A7999E68AA7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuideDomain", "GuideDomain\GuideDomain.csproj", "{A2E8B8C8-681E-4CF2-BF1F-239B0CA8A904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryDomain", "DirectoryDomain\DirectoryDomain.csproj", "{A2E8B8C8-681E-4CF2-BF1F-239B0CA8A904}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumsLib", "EnumsLib\EnumsLib.csproj", "{C6778C45-2F55-4FAA-AB65-428CB59F98A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeltaAPI", "DeltaAPI\DeltaAPI.csproj", "{65DF8115-B786-4873-B45D-C6E423C81796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeltaAPI", "DeltaAPI\DeltaAPI.csproj", "{65DF8115-B786-4873-B45D-C6E423C81796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

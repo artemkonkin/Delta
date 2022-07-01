@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseRepositoryLib\BaseRepositoryLib.csproj" />
-    <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
+    <ProjectReference Include="..\BaseServiceLib\BaseServiceLib.csproj" />
     <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
-    <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
+    <ProjectReference Include="..\GuideDomain\DirectoryDomain.csproj" />
+    <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
   </ItemGroup>
 
 </Project>

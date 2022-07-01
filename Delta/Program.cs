@@ -1,11 +1,11 @@
 using BaseRepositoryLib;
 using DbContextLib;
+using DirectoriesLib.Directory;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
-using RepositoriesLib.Interfaces.Guide;
-using ServicesLib.Guide;
+using RepositoriesLib.Interfaces.Directory;
 using UnitOfWorkLib;
 using UserDomain;
 
@@ -29,14 +29,14 @@ builder.Services.AddScoped<Func<AppDbContext>>((provider) => ()
     => provider.GetService<AppDbContext>()
        ?? throw new InvalidOperationException());
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<IGuideListRepository, GuideListRepository>();
+builder.Services.AddScoped<IDirectoryListRepository, DirectoryListRepository>();
 builder.Services.AddScoped<INoteRepository, NoteRepository>();
 builder.Services.AddScoped<DbFactory>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // SERVICES
 
-builder.Services.AddTransient<IGuideListService, GuideListService>();
+builder.Services.AddTransient<IDirectoryListService, DirectoryListService>();
 
 // APP
 

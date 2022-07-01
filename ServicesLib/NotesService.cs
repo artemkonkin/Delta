@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Security.Claims;
-using BaseEntityLib;
 using BaseServiceLib;
 using EnumsLib;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +8,7 @@ using RepositoriesLib.Interfaces;
 using UnitOfWorkLib;
 using UserDomain;
 
-namespace ServicesLib
+namespace DirectoriesLib
 {
     /// <summary>
     /// Notes service

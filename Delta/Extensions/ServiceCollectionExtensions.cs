@@ -1,12 +1,11 @@
 ﻿using BaseRepositoryLib;
 using DbContextLib;
+using DirectoriesLib;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using RepositoriesLib;
 using RepositoriesLib.Interfaces;
-using RepositoriesLib.Interfaces.Guide;
-using ServicesLib;
-using ServicesLib.Guide;
+using RepositoriesLib.Interfaces.Directory;
 using UnitOfWorkLib;
 using UserDomain;
 
@@ -52,7 +51,7 @@ namespace Delta.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IGuideListRepository, GuideListRepository>();
+            services.AddScoped<IDirectoryListRepository, DirectoryListRepository>();
             services.AddScoped<INoteRepository, NoteRepository>();
 
             return services;
@@ -66,7 +65,7 @@ namespace Delta.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<NotesService>();
-            // services.AddScoped<GuideListService>();
+            // services.AddScoped<DirectoryListService>();
 
             return services;
         }
