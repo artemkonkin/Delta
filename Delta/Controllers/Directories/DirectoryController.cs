@@ -12,12 +12,12 @@ namespace Delta.Controllers.Directories
     public class DirectoryController : BaseController
     {
         private readonly IDirectoryListRepository _directoryListRepository;
-        private readonly IDirectoryListService _guideListService;
+        private readonly IDirectoryListService _directoryListService;
 
-        public DirectoryController(IDirectoryListRepository directoryListRepository, UserManager<AppUser>? userManager, IDirectoryListService guideListService) : base(userManager)
+        public DirectoryController(IDirectoryListRepository directoryListRepository, UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
         {
             _directoryListRepository = directoryListRepository;
-            _guideListService = guideListService;
+            _directoryListService = directoryListService;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Delta.Controllers.Directories
         /// <returns></returns>
         public IActionResult Index()
         {
-            var guidesList = _guideListService.GetAllDirectoriesLists();
+            var guidesList = _directoryListService.GetAllDirectoriesLists();
             return View(guidesList);
         }
 
@@ -48,41 +48,41 @@ namespace Delta.Controllers.Directories
         /// <returns> Directories lists </returns>
         [HttpGet]
         [Produces("application/json")]
-        public IActionResult GetGuidesLists()
+        public IActionResult GetDirectoriesLists()
         {
-            var guidesList = _guideListService.GetAllDirectoriesLists();
+            var guidesList = _directoryListService.GetAllDirectoriesLists();
             return Json(guidesList.ToList());
         }
 
         /// <summary>
         /// Add guide list
         /// </summary>
-        /// <param name="guideListName"> Directories lists name </param>
+        /// <param name="directoryListName"> Directories lists name </param>
         [HttpPost]
         [Produces("application/json")]
-        public IActionResult CreateGuideList(string guideListName)
+        public IActionResult CreateDirectoryList(string directoryListName)
         {
-            var newGuideList = new DirectoriesList
+            var newDirectoryList = new DirectoriesList
             {
-                Name = guideListName
+                Name = directoryListName
             };
 
-            var response = _guideListService.AddDirectoryList(newGuideList);
+            var response = _directoryListService.AddDirectoryList(newDirectoryList);
 
             return Json(response);
         }
 
         [HttpPost]
-        public IActionResult DeleteGuidesList(Guid guid)
+        public IActionResult DeleteDirectoriesList(Guid guid)
         {
-            var response = _guideListService.DeleteDirectoryList(guid);
+            var response = _directoryListService.DeleteDirectoryList(guid);
             return Json(response);
         }
 
         [HttpPost]
-        public IActionResult EditGuidesList(DirectoriesList entity)
+        public IActionResult EditDirectoriesList(DirectoriesList entity)
         {
-            var response = _guideListService.UpdateDirectoryList(entity);
+            var response = _directoryListService.UpdateDirectoryList(entity);
             return Json(response);
         }
     }

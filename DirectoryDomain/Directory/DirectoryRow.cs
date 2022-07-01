@@ -24,7 +24,7 @@ namespace DirectoryDomain.Directory
         /// </summary>
         [Required]
         [ForeignKey("DirectoryId")]
-        public Guid GuideId { get; set; }
+        public Guid DirectoryId { get; set; }
         public virtual DirectoryEntity Directory { get; set; }
 
         /// <summary>

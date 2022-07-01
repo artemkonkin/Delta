@@ -18,7 +18,7 @@ namespace DirectoryDomain.Directory
         /// </summary>
         [Required]
         [ForeignKey("DirectoryRowId")]
-        public virtual Guid GuideRowId { get; set; }
+        public virtual Guid DirectoryRowId { get; set; }
         public virtual DirectoryRow DirectoryRow { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace DirectoryDomain.Directory
         /// </summary>
         [Required]
         [ForeignKey("DirectoryColId")]
-        public virtual Guid GuideColId { get; set; }
+        public virtual Guid DirectoryColId { get; set; }
         public virtual DirectoryCol DirectoryCol { get; set; }
 
         /// <summary>

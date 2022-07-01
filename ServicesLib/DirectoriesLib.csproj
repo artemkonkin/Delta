@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BaseServiceLib\BaseServiceLib.csproj" />
     <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
-    <ProjectReference Include="..\GuideDomain\DirectoryDomain.csproj" />
     <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
   </ItemGroup>
 

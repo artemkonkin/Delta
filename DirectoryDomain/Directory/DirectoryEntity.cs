@@ -31,7 +31,7 @@ namespace DirectoryDomain.Directory
         /// </summary>
         [Required]
         [ForeignKey("DirectoryListId")]
-        public virtual Guid GuideListId { get; set; }
+        public virtual Guid DirectoryListId { get; set; }
         public virtual DirectoriesList DirectoryList { get; set; }
 
         /// <summary>

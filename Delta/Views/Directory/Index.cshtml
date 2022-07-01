@@ -43,7 +43,7 @@
                    transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                    id=""
                    placeholder="Name"
-                   v-model="guideName">
+                   v-model="directoryName">
             <button type="submit" class=" w-full mt-6 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs 
                     leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
                     focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
@@ -82,7 +82,7 @@
                    transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                    id=""
                    placeholder="Name"
-                   v-model="guideName">
+                   v-model="directoryName">
             <button type="submit" class=" w-full mt-6 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs 
                     leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
                     focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
@@ -252,12 +252,12 @@
 <script>
 
     // Directory list vm
-    const GuideList = {
+    const DirectoryList = {
         data() {
             return {
-                guideList: [],
+                directoryList: [],
                 data: {},
-                guideName: ""
+                directoryName: ""
             };
         },
         mounted() {
@@ -267,40 +267,40 @@
                 });
         },
         methods: {
-            getGuidesLists() {
+            getDirectoriesLists() {
                 window.axios.get("/Directory/GetDirectorysLists")
                     .then((response) => {
                         this.data = Object.assign({}, response.data);
                     });
             },
-            createGuideList() {
+            createDirectoryList() {
                 window.axios({
                     method: 'POST',
                     url: '/Directory/CreateDirectoryList',
-                    params: { guideListName: this.guideName }
+                    params: { guideListName: this.directoryName }
                 }).then((response) => {
                     console.log(response.data);
-                    this.getGuidesLists();
+                    this.getDirectoriesLists();
                 });
             },
-            deleteGuidesList(item) {
+            deleteDirectoriesList(item) {
                 window.axios({
                     method: 'POST',
                     url: '/Directory/DeleteDirectorysList',
                     params: { guid: item.id }
                 }).then((response) => {
                     console.log(response.data);
-                    this.getGuidesLists();
+                    this.getDirectoriesLists();
                 });
             },
-            editGuidesList(item) {
+            editDirectoriesList(item) {
                 window.axios({
                     method: 'POST',
                     url: '/Directory/EditDirectorysList',
                     params: item
                 }).then((response) => {
                     console.log(response.data);
-                    this.getGuidesLists();
+                    this.getDirectoriesLists();
                 });
             }
         }
@@ -310,7 +310,7 @@
 
 <script>
     
-    Vue.createApp(GuideList).mount('#guideListViewModel');
+    Vue.createApp(DirectoryList).mount('#directoryListViewModel');
 
     // Another
     Vue.createApp({

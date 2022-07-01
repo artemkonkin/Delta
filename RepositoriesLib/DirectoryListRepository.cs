@@ -25,17 +25,17 @@ namespace RepositoriesLib
         /// <summary>
         /// Get directory list
         /// </summary>
-        /// <param name="guideListId"> Directory list id </param>
+        /// <param name="directoryListId"> Directory list id </param>
         /// <returns></returns>
-        public Response<DirectoriesList> GetDirectoryListById(Guid guideListId)
+        public Response<DirectoriesList> GetDirectoryListById(Guid directoryListId)
         {
-            var result = Get(lists => lists.Id == guideListId);
+            var result = Get(lists => lists.Id == directoryListId);
             return new Response<DirectoriesList>
             {
                 Status = ResponseStatus.Success,
                 Data = result.Any() 
                     ? result.First() 
-                    : throw new Exception($"Directory list {guideListId} not fount."),
+                    : throw new Exception($"Directory list {directoryListId} not fount."),
                 Message = null
             };
         }

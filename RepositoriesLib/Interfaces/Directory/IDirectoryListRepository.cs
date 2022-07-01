@@ -18,9 +18,9 @@ namespace RepositoriesLib.Interfaces.Directory
         /// <summary>
         /// Get directory list
         /// </summary>
-        /// <param name="guideListId"> Directory list id </param>
+        /// <param name="directoryListId"> Directory list id </param>
         /// <returns></returns>
-        Response<DirectoriesList> GetDirectoryListById(Guid guideListId);
+        Response<DirectoriesList> GetDirectoryListById(Guid directoryListId);
 
         /// <summary>
         /// Add directory list with guides

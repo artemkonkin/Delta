@@ -3,7 +3,7 @@ using DirectoryRowColData = DirectoryDomain.ViewModels.DirectoryRowColData;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
-    public interface IGuideRowColData
+    public interface IDirectoryRowColData
     {
         /* DIRECTORY ROW - COL DATA VALUE */
 
