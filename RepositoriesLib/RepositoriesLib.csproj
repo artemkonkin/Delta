@@ -9,6 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\BaseRepositoryLib\BaseRepositoryLib.csproj" />
     <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
+    <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
+    <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
   </ItemGroup>
 
 </Project>

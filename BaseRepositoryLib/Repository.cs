@@ -10,11 +10,19 @@ namespace BaseRepositoryLib
         private readonly DbFactory _dbFactory;
         private DbSet<T> _dbSet;
 
-        private DbSet<T> DbSet => _dbSet ??= _dbFactory.DbContext.Set<T>();
+        protected DbSet<T> DbSet
+        {
+            get => _dbSet ?? (_dbSet = _dbFactory.DbContext.Set<T>());
+        }
 
         public Repository(DbFactory dbFactory)
         {
             _dbFactory = dbFactory;
+        }
+
+        public IQueryable<T> Get(Expression<Func<T, bool>> expression)
+        {
+            return DbSet.Where(expression);
         }
 
         public void Add(T entity)
@@ -24,6 +32,7 @@ namespace BaseRepositoryLib
                 ((IAuditEntity)entity).CreatedDate = DateTime.UtcNow;
             }
             DbSet.Add(entity);
+            _dbFactory.DbContext.SaveChanges();
         }
 
         public void Delete(T entity)
@@ -32,12 +41,17 @@ namespace BaseRepositoryLib
             {
                 ((IDeleteEntity)entity).IsDeleted = true;
                 DbSet.Update(entity);
+                _dbFactory.DbContext.SaveChanges();
             }
             else
+            {
                 DbSet.Remove(entity);
+                _dbFactory.DbContext.SaveChanges();
+            }
+                
         }
 
-        public IQueryable<T> Get(Expression<Func<T, bool>> expression)
+        public IQueryable<T> List(Expression<Func<T, bool>> expression)
         {
             return DbSet.Where(expression);
         }
@@ -49,6 +63,7 @@ namespace BaseRepositoryLib
                 ((IAuditEntity)entity).UpdatedDate = DateTime.UtcNow;
             }
             DbSet.Update(entity);
+            _dbFactory.DbContext.SaveChanges();
         }
     }
 }

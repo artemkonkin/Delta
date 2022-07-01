@@ -10,6 +10,7 @@ namespace DbContextLib
         private bool _disposed;
         private readonly Func<AppDbContext?> _instanceFunc;
         private DbContext? _dbContext;
+
         public DbContext DbContext
             => (_dbContext ??= _instanceFunc.Invoke())
                ?? throw new Exception("DbContext is NULL!");

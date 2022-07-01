@@ -5,6 +5,8 @@ namespace BaseEntityLib
 {
     public interface IBaseEntity<TKey>
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         TKey Id { get; set; }
     }
 

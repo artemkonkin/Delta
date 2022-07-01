@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DbContextLib.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220524101408_init")]
-    partial class init
+    [Migration("20220701042908_directory")]
+    partial class directory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,112 @@ namespace DbContextLib.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("DirectoryDomain.DirectoriesList", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DirectoriesLists");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryCol", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DataType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("DirectoryRowId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectoryRowId");
+
+                    b.ToTable("DirectoryCols");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DirectoryListId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectoryListId");
+
+                    b.ToTable("Directories");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryRow", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DirectoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DirectoryRowId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectoryRowId");
+
+                    b.ToTable("DirectoriesRows");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.ViewModels.DirectoryRowColData", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DirectoryColId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DirectoryRowId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<object>("Value")
+                        .IsRequired()
+                        .HasColumnType("sql_variant")
+                        .HasColumnName("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectoryColId");
+
+                    b.HasIndex("DirectoryRowId");
+
+                    b.ToTable("DirectoriesRowsColsData");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -161,7 +267,7 @@ namespace DbContextLib.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("NotesDomain.NoteEntity", b =>
+            modelBuilder.Entity("NoteDomain.NoteEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,6 +357,54 @@ namespace DbContextLib.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryCol", b =>
+                {
+                    b.HasOne("DirectoryDomain.Directory.DirectoryRow", null)
+                        .WithMany("Cols")
+                        .HasForeignKey("DirectoryRowId");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryEntity", b =>
+                {
+                    b.HasOne("DirectoryDomain.DirectoriesList", "DirectoryList")
+                        .WithMany("DirectoryEntities")
+                        .HasForeignKey("DirectoryListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DirectoryList");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryRow", b =>
+                {
+                    b.HasOne("DirectoryDomain.Directory.DirectoryEntity", "Directory")
+                        .WithMany("DirectoryRows")
+                        .HasForeignKey("DirectoryRowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Directory");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.ViewModels.DirectoryRowColData", b =>
+                {
+                    b.HasOne("DirectoryDomain.Directory.DirectoryCol", "DirectoryCol")
+                        .WithMany("DirectoryRowColData")
+                        .HasForeignKey("DirectoryColId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DirectoryDomain.Directory.DirectoryRow", "DirectoryRow")
+                        .WithMany("DirectoryRowColData")
+                        .HasForeignKey("DirectoryRowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DirectoryCol");
+
+                    b.Navigation("DirectoryRow");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -302,7 +456,7 @@ namespace DbContextLib.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NotesDomain.NoteEntity", b =>
+            modelBuilder.Entity("NoteDomain.NoteEntity", b =>
                 {
                     b.HasOne("UserDomain.AppUser", "User")
                         .WithMany()
@@ -311,6 +465,28 @@ namespace DbContextLib.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.DirectoriesList", b =>
+                {
+                    b.Navigation("DirectoryEntities");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryCol", b =>
+                {
+                    b.Navigation("DirectoryRowColData");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryEntity", b =>
+                {
+                    b.Navigation("DirectoryRows");
+                });
+
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryRow", b =>
+                {
+                    b.Navigation("Cols");
+
+                    b.Navigation("DirectoryRowColData");
                 });
 #pragma warning restore 612, 618
         }

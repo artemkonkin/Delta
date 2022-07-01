@@ -1,25 +1,44 @@
+using BaseRepositoryLib;
 using DbContextLib;
-using Delta.Extensions;
-using UserDomain;
-using static Delta.Extensions.AppServiceCollection;
+using DirectoriesLib.Directory;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using RepositoriesLib;
+using RepositoriesLib.Interfaces;
+using RepositoriesLib.Interfaces.Directory;
+using UnitOfWorkLib;
+using UserDomain;
 
 // Δ Delta
 
 var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
-var ext = new AppServiceCollection();
+var conStrBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("DeltaConnectionString"));
+var connection = conStrBuilder.ConnectionString;
 
-AddDatabase(configuration, builder);
-AddRepositories(builder);
-AddServices(builder);
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<DbContextLib.AppDbContext>();
+    .AddEntityFrameworkStores<AppDbContext>();
+
+// MVC
+
 builder.Services.AddControllersWithViews();
+
+// REPOSITORIES
+
+builder.Services.AddScoped<Func<AppDbContext>>((provider) => ()
+    => provider.GetService<AppDbContext>()
+       ?? throw new InvalidOperationException());
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IDirectoryListRepository, DirectoryListRepository>();
+builder.Services.AddScoped<INoteRepository, NoteRepository>();
+builder.Services.AddScoped<DbFactory>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// SERVICES
+
+builder.Services.AddTransient<IDirectoryListService, DirectoryListService>();
+
+// APP
 
 var app = builder.Build();
 

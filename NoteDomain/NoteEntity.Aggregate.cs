@@ -1,4 +1,4 @@
-﻿namespace NotesDomain
+﻿namespace NoteDomain
 {
     public partial class NoteEntity
     {

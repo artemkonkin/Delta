@@ -7,49 +7,62 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Delta.styles.css" asp-append-version="true"/>
 
-    <link rel="stylesheet" href="/lib/tailwind.css"/>
-    <link rel="stylesheet" href="/lib/flowbite.min.css"/>
-    <script src="lib/vue.global.js"></script>
-    <script src="lib/flowbite.js"></script>
+    <link rel="stylesheet" href="~/lib/tailwind.css"/>
+    <link rel="stylesheet" href="~/lib/flowbite.css"/>
+    <script src="~/lib/tailwind.js"></script>
+    <script src="~/lib/flowbite.js"></script>
+    <script src="~/lib/vue.global.prod.js"></script>
+    <script src="~/lib/axios.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
 </head>
 <body>
-<header>
 
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="flex items-center">
-                <img src="/img/logo.svg" class="mr-3 h-6 sm:h-9" alt="Delta Logo"/>
-            </a>
-            <div class="flex items-center md:order-2">
+<div class="flex h-full w-full flex-row gap-6" style="height: 100vh;">
+    <div class="flex h-full flex-col gap-6">
+        <aside class="h-full w-64" aria-label="Sidebar">
+            <div class="h-full overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="flex items-center pl-2.5 mb-5">
+                    DELTA
+                </a>
+
+                <partial name="_MenuItemspartial"/>
                 <partial name="_LoginPartial"/>
+
             </div>
-
-            <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
-                <partial name="_MenuItems"/>
-            </div>
-
-        </div>
-    </nav>
-
-</header>
-
-<div class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <main role="main" class="container flex flex-wrap justify-between pb-3">
-            @RenderBody()
-        </main>
+        </aside>
     </div>
-</div>
-
-<footer class="border-top footer text-muted">
-    <div class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <div class="flex w-full flex-col pr-6">
+        <div class="flex w-full flex-col">
+            <main role="main" class="flex w-full flex-col gap-3">
+                @RenderBody()
+            </main>
+        </div>
+        <div class="flex w-full">
             &copy; 2022 - Delta - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </div>
-</footer>
+</div>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DbContextLib.Migrations
 {
-    public partial class init : Migration
+    public partial class directory : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,18 @@ namespace DbContextLib.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DirectoriesLists",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DirectoriesLists", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -174,6 +186,89 @@ namespace DbContextLib.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Directories",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    DirectoryListId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Directories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Directories_DirectoriesLists_DirectoryListId",
+                        column: x => x.DirectoryListId,
+                        principalTable: "DirectoriesLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DirectoriesRows",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DirectoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DirectoryRowId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DirectoriesRows", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DirectoriesRows_Directories_DirectoryRowId",
+                        column: x => x.DirectoryRowId,
+                        principalTable: "Directories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DirectoryCols",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
+                    DataType = table.Column<int>(type: "int", nullable: false),
+                    DirectoryRowId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DirectoryCols", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DirectoryCols_DirectoriesRows_DirectoryRowId",
+                        column: x => x.DirectoryRowId,
+                        principalTable: "DirectoriesRows",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DirectoriesRowsColsData",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DirectoryRowId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DirectoryColId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Value = table.Column<object>(type: "sql_variant", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DirectoriesRowsColsData", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DirectoriesRowsColsData_DirectoriesRows_DirectoryRowId",
+                        column: x => x.DirectoryRowId,
+                        principalTable: "DirectoriesRows",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DirectoriesRowsColsData_DirectoryCols_DirectoryColId",
+                        column: x => x.DirectoryColId,
+                        principalTable: "DirectoryCols",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -214,6 +309,31 @@ namespace DbContextLib.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Directories_DirectoryListId",
+                table: "Directories",
+                column: "DirectoryListId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DirectoriesRows_DirectoryRowId",
+                table: "DirectoriesRows",
+                column: "DirectoryRowId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DirectoriesRowsColsData_DirectoryColId",
+                table: "DirectoriesRowsColsData",
+                column: "DirectoryColId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DirectoriesRowsColsData_DirectoryRowId",
+                table: "DirectoriesRowsColsData",
+                column: "DirectoryRowId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DirectoryCols_DirectoryRowId",
+                table: "DirectoryCols",
+                column: "DirectoryRowId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Notes_UserId",
                 table: "Notes",
                 column: "UserId");
@@ -237,13 +357,28 @@ namespace DbContextLib.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "DirectoriesRowsColsData");
+
+            migrationBuilder.DropTable(
                 name: "Notes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "DirectoryCols");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "DirectoriesRows");
+
+            migrationBuilder.DropTable(
+                name: "Directories");
+
+            migrationBuilder.DropTable(
+                name: "DirectoriesLists");
         }
     }
 }

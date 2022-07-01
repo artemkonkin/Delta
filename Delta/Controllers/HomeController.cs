@@ -1,84 +1,25 @@
 ﻿using Delta.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Delta.Controllers.Base;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Identity;
+using RepositoriesLib.Interfaces;
+using UserDomain;
 
 namespace Delta.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(ILogger<HomeController> logger) : base(logger)
+        private readonly INoteRepository _noteRepository;
+
+        public HomeController(INoteRepository noteRepository, UserManager<AppUser>? userManager) : base(userManager)
         {
+            _noteRepository = noteRepository;
         }
 
         public IActionResult Index()
         {
-            var friendsList = new List<VueUser>
-            {
-                new VueUser
-                {
-                    LastName = "Ford",
-                    Name = "Henry",
-                    Username = "henryford121"
-                },
-                new VueUser
-                {
-                    LastName = "Montgo",
-                    Name = "Suzzie",
-                    Username = "mongosus"
-                },
-                new VueUser
-                {
-                    LastName = "Rivera",
-                    Name = "Luis",
-                    Username = "starraiden"
-                }
-            };
-
-            TempData["TempDataFriendsList"] = JsonConvert.SerializeObject(friendsList);
-            var model = new IndexViewModel
-            {
-                User = new VueUser
-                {
-                    LastName = "Rivera",
-                    Name = "Genesis",
-                    Username = "genesisrrios"
-                },
-                FriendList = friendsList
-            };
-
-            return View(model);
-		}
-
-        [HttpPost]
-        public bool InsertNewFriendInMemory([FromBody] VueUser friend)
-        {
-            if (friend == default || !TempData.ContainsKey("TempDataFriendsList")) return false;
-            var tempData = TempData["TempDataFriendsList"];
-            var deserializedData = JsonConvert.DeserializeObject<List<VueUser>>((string)tempData);
-            deserializedData.Add(friend);
-            TempData["TempDataFriendsList"] = JsonConvert.SerializeObject(deserializedData);
-            return true;
-        }
-
-        public List<VueUser> GetFriendsList()
-        {
-            var tempData = TempData["TempDataFriendsList"];
-            TempData.Keep();
-            var deserializedData = JsonConvert.DeserializeObject<List<VueUser>>((string)tempData);
-            return deserializedData;
-        }
-
-        [HttpDelete]
-        public bool RemoveFriend([FromBody] VueUser friend)
-        {
-            if (friend == default || !TempData.ContainsKey("TempDataFriendsList")) return false;
-            var tempData = TempData["TempDataFriendsList"];
-            var deserializedData = JsonConvert.DeserializeObject<List<VueUser>>((string)tempData);
-            deserializedData.Remove(friend);
-            TempData["TempDataFriendsList"] = JsonConvert.SerializeObject(deserializedData);
-            return true;
+            _noteRepository.GetUserNotes(GetUserId());
+            return View();
         }
 
         public IActionResult Privacy()

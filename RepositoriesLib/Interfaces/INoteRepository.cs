@@ -1,6 +1,6 @@
 ﻿using BaseEntityLib;
 using BaseRepositoryLib;
-using NotesDomain;
+using NoteDomain;
 
 namespace RepositoriesLib.Interfaces
 {
