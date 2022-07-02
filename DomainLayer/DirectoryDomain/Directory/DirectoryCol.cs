@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BaseEntityLib;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BaseEntityLib;
 using EnumsLib;
 
 namespace DirectoryDomain.Directory

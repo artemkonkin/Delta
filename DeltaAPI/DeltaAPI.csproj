@@ -24,7 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
+    <ProjectReference Include="..\DomainLayer\BaseEntityLib\BaseEntityLib.csproj" />
+    <ProjectReference Include="..\DomainLayer\EnumsLib\EnumsLib.csproj" />
+    <ProjectReference Include="..\DomainLayer\UserDomain\UserDomain.csproj" />
+    <ProjectReference Include="..\RepositoryLayer\DbContextLib\DbContextLib.csproj" />
   </ItemGroup>
 
 </Project>

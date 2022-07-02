@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DirectoryDomain.Directory;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntityLib;
-using DirectoryDomain.Directory;
 
 namespace DirectoryDomain;
 

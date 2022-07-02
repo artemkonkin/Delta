@@ -17,8 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DomainLayer\DirectoryDomain\DirectoryDomain.csproj" />
-    <ProjectReference Include="..\NoteDomain\NoteDomain.csproj" />
+    <ProjectReference Include="..\..\DomainLayer\DirectoryDomain\DirectoryDomain.csproj" />
+    <ProjectReference Include="..\..\DomainLayer\NoteDomain\NoteDomain.csproj" />
+    <ProjectReference Include="..\..\DomainLayer\UserDomain\UserDomain.csproj" />
   </ItemGroup>
 
 </Project>

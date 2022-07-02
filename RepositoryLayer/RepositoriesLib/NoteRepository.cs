@@ -13,7 +13,7 @@ namespace RepositoriesLib
         {
         }
 
-        public IQueryable<NoteEntity> GetUserNotes(string userId)
+        public IQueryable<NoteEntity> GetUserNotes(string? userId)
         {
             return Get(x => x.UserId == userId);
         }

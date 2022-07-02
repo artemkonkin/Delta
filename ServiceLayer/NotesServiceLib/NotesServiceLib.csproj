@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\InfrastructureLayer\FactoryServiceLib\FactoryServiceLib.csproj" />
+    <ProjectReference Include="..\..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
+    <ProjectReference Include="..\..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />
     <ProjectReference Include="..\BaseServiceLib\BaseServiceLib.csproj" />
-    <ProjectReference Include="..\FactoryServiceLib\FactoryServiceLib.csproj" />
-    <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
-    <ProjectReference Include="..\UnitOfWork\UnitOfWorkLib.csproj" />
   </ItemGroup>
 
 </Project>

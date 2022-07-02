@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using UnitOfWorkLib;
-using AppUser = UserDomain.AppUser;
+using UserDomain;
 
 namespace BaseServiceLib
 {
