@@ -11,12 +11,10 @@ namespace Delta.Controllers.Directories
     [Authorize]
     public class DirectoryController : BaseController
     {
-        private readonly IDirectoryListRepository _directoryListRepository;
         private readonly IDirectoryListService _directoryListService;
 
-        public DirectoryController(IDirectoryListRepository directoryListRepository, UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
+        public DirectoryController(UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
         {
-            _directoryListRepository = directoryListRepository;
             _directoryListService = directoryListService;
         }
 
