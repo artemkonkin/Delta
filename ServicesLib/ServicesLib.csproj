@@ -11,9 +11,4 @@
     <ProjectReference Include="..\UnitOfWork\UnitOfWorkLib.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="DirectoryDomain">
-    </Reference>
-  </ItemGroup>
-
 </Project>
