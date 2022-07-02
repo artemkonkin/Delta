@@ -1,6 +1,6 @@
-﻿using DirectoryDomain.Directory;
+﻿using DirectoriesDomain.Directory;
 
-namespace DirectoryDomain.ViewModels
+namespace DirectoriesDomain.ViewModels
 {
     /// <summary>
     /// Read guide list view model
@@ -11,12 +11,12 @@ namespace DirectoryDomain.ViewModels
         /// Identifier
         /// </summary>
         public Guid Id { get; set; }
-        
+
         /// <summary>
         /// Directory name
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// Directories list
         /// </summary>

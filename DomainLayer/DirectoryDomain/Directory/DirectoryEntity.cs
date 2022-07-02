@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntityLib;
 
-namespace DirectoriesDomain.Directory
+namespace DirectoryDomain.Directory
 {
     /// <summary>
     /// Directory entity

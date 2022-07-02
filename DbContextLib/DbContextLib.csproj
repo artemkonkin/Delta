@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DirectoryDomain\DirectoryDomain.csproj" />
+    <ProjectReference Include="..\DomainLayer\DirectoryDomain\DirectoryDomain.csproj" />
     <ProjectReference Include="..\NoteDomain\NoteDomain.csproj" />
   </ItemGroup>
 

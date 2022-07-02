@@ -1,9 +1,9 @@
-﻿namespace DirectoriesDomain.ViewModels
+﻿namespace DirectoryDomain.ViewModels
 {
     /// <summary>
-    /// Create guide list view model
+    /// Delete guide list view model
     /// </summary>
-    public class CreateDirectoryListVm
+    public class DeleteDirectoryListVm
     {
         /// <summary>
         /// Identifier

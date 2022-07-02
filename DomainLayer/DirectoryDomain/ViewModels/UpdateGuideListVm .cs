@@ -1,6 +1,6 @@
-﻿using DirectoriesDomain.Directory;
+﻿using DirectoryDomain.Directory;
 
-namespace DirectoriesDomain.ViewModels
+namespace DirectoryDomain.ViewModels
 {
     /// <summary>
     /// Update guide list view model

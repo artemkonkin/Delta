@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntityLib;
 using EnumsLib;
 
-namespace DirectoriesDomain.Directory
+namespace DirectoryDomain.Directory
 {
     /// <summary>
     /// Directory col

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NoteDomain;
 using UserDomain;
-using DirectoryRowColData = DirectoryDomain.ViewModels.DirectoryRowColData;
 
 namespace DbContextLib
 {

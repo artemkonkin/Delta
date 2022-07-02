@@ -1,4 +1,4 @@
-﻿namespace DirectoryDomain.ViewModels
+﻿namespace DirectoriesDomain.ViewModels
 {
     /// <summary>
     /// Delete guide list view model

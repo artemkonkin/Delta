@@ -29,10 +29,4 @@
     <ProjectReference Include="..\UserDomain\UserDomain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="DirectoryDomain">
-      <HintPath>..\DirectoryDomain\bin\Debug\net6.0\DirectoryDomain.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

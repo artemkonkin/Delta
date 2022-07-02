@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DirectoriesDomain.Directory;
 
-namespace DirectoriesDomain.ViewModels
+namespace DirectoryDomain.Directory
 {
     /// <summary>
     /// Directory row data

@@ -1,11 +1,11 @@
-﻿using DirectoriesDomain.Directory;
+﻿using DirectoryDomain.Directory;
 
-namespace DirectoriesDomain.ViewModels
+namespace DirectoryDomain.ViewModels
 {
     /// <summary>
-    /// Update guide list view model
+    /// Read guide list view model
     /// </summary>
-    public class UpdateDirectoryListVm
+    public class ReadDirectoryListVm
     {
         /// <summary>
         /// Identifier
@@ -20,6 +20,6 @@ namespace DirectoriesDomain.ViewModels
         /// <summary>
         /// Directories list
         /// </summary>
-        public IQueryable<DirectoryEntity>? Directories { get; set; }
+        public ICollection<DirectoryEntity> Directories { get; set; }
     }
 }

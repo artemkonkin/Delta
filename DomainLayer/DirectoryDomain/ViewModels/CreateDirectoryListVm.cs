@@ -1,4 +1,4 @@
-﻿namespace DirectoriesDomain.ViewModels
+﻿namespace DirectoryDomain.ViewModels
 {
     /// <summary>
     /// Create guide list view model

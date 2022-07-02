@@ -1,36 +1,36 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BaseEntityLib;
-using EnumsLib;
 
-namespace DirectoriesDomain.Directory
+namespace DirectoryDomain.Directory
 {
     /// <summary>
-    /// Directory col
+    /// Directory row
     /// </summary>
-    [Table("DirectoryCols")]
-    public class DirectoryCol : IBaseEntity<Guid>
+    [Table("DirectoriesRows")]
+    public class DirectoryRow : IBaseEntity<Guid>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Coll name
+        /// Cols
+        /// </summary>
+        public virtual ICollection<DirectoryCol> Cols { get; set; }
+
+        /// <summary>
+        /// Directory
         /// </summary>
         [Required]
-        [MaxLength(64)]
-        public virtual string Name { get; set; }
+        [ForeignKey("DirectoryId")]
+        public Guid DirectoryId { get; set; }
+        public virtual DirectoryEntity Directory { get; set; }
 
         /// <summary>
-        /// Coll data type
+        /// Row - Col data
         /// </summary>
-        public virtual ItemParameterDataType DataType { get; set; }
-
-        /// <summary>
-        /// CollData
-        /// </summary>
-        [ForeignKey("DirectoryColId")]
+        [ForeignKey("DirectoryRowId")]
         public virtual ICollection<ViewModels.DirectoryRowColData> DirectoryRowColData { get; set; }
     }
 }

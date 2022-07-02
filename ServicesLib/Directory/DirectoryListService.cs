@@ -10,14 +10,10 @@ namespace ServicesLib.Directory
 {
     public class DirectoryListService : IDirectoryListService
     {
-        private readonly IUnitOfWork _uow;
-        private readonly UserManager<AppUser> _userManager;
         private readonly IDirectoryListRepository _directoryListRepository;
 
         public DirectoryListService(IUnitOfWork uow, UserManager<AppUser> userManager, IDirectoryListRepository directoryListRepository)
         {
-            _uow = uow;
-            _userManager = userManager;
             _directoryListRepository = directoryListRepository;
         }
 
