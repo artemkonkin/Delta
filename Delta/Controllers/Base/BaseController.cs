@@ -26,9 +26,9 @@ namespace Delta.Controllers.Base
         /// Get cuttent user Id
         /// </summary>
         /// <returns> Current user Id </returns>
-        public string GetCurrentUserId()
+        public string? GetCurrentUserId()
         {
-            return _userManager.GetUserId(ClaimsPrincipal.Current);
+            return _userManager?.GetUserId(ClaimsPrincipal.Current);
         }
     }
 }

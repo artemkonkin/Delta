@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\InfrastructureLayer\FactoryServiceLib\FactoryServiceLib.csproj" />
+    <ProjectReference Include="..\..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
+    <ProjectReference Include="..\..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />
+    <ProjectReference Include="..\BaseServiceLib\BaseServiceLib.csproj" />
+  </ItemGroup>
+
+</Project>

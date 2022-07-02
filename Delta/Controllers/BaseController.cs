@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using AppUser = UserDomain.AppUser;
 
@@ -17,7 +16,7 @@ namespace Delta.Controllers
             _userManager = userManager;
         }
 
-        public string GetUserId() => _userManager.GetUserId(User);
-        public Task<AppUser> GetUser() => _userManager.GetUserAsync(User);
+        public string? GetUserId() => _userManager?.GetUserId(User);
+        public Task<AppUser>? GetUser() => _userManager?.GetUserAsync(User);
     }
 }

@@ -13,31 +13,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceLayer", "ServiceLaye
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RepositoryLayer", "RepositoryLayer", "{EF87AE09-0BE5-4E2E-88CA-B3CE902A6C87}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseRepositoryLib", "BaseRepositoryLib\BaseRepositoryLib.csproj", "{E2642427-AA18-42C7-AF6C-B4F0ABCCF50F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseRepositoryLib", "RepositoryLayer\BaseRepositoryLib\BaseRepositoryLib.csproj", "{E2642427-AA18-42C7-AF6C-B4F0ABCCF50F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseEntityLib", "BaseEntityLib\BaseEntityLib.csproj", "{FB761CC8-AFCC-4977-AFC9-73C687D06D2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseEntityLib", "DomainLayer\BaseEntityLib\BaseEntityLib.csproj", "{FB761CC8-AFCC-4977-AFC9-73C687D06D2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseServiceLib", "BaseServiceLib\BaseServiceLib.csproj", "{BD38B8A5-2C2F-41D1-A6AE-37AC5D99B33C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseServiceLib", "ServiceLayer\BaseServiceLib\BaseServiceLib.csproj", "{BD38B8A5-2C2F-41D1-A6AE-37AC5D99B33C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWorkLib", "UnitOfWork\UnitOfWorkLib.csproj", "{59136085-85F3-4D11-A397-144CAB8FD467}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWorkLib", "InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj", "{59136085-85F3-4D11-A397-144CAB8FD467}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbContextLib", "DbContextLib\DbContextLib.csproj", "{7941457A-8923-4920-8013-6634839C3FF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbContextLib", "RepositoryLayer\DbContextLib\DbContextLib.csproj", "{7941457A-8923-4920-8013-6634839C3FF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserDomain", "UserDomain\UserDomain.csproj", "{F1B4F45F-A5FD-41DB-8447-B42894D71B4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserDomain", "DomainLayer\UserDomain\UserDomain.csproj", "{F1B4F45F-A5FD-41DB-8447-B42894D71B4C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteDomain", "NoteDomain\NoteDomain.csproj", "{34947B5A-53D9-49ED-B7A7-E7B10FC8247A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteDomain", "DomainLayer\NoteDomain\NoteDomain.csproj", "{34947B5A-53D9-49ED-B7A7-E7B10FC8247A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoriesLib", "RepositoriesLib\RepositoriesLib.csproj", "{EE525C0D-F0A5-4E5B-91FA-610E8D51597A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoriesLib", "RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj", "{EE525C0D-F0A5-4E5B-91FA-610E8D51597A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLib", "ServicesLib\ServicesLib.csproj", "{0542146C-6365-4C3C-9300-A7999E68AA7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLib", "ServiceLayer\ServicesLib\ServicesLib.csproj", "{0542146C-6365-4C3C-9300-A7999E68AA7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesServiceLib", "NotesServiceLib\NotesServiceLib.csproj", "{59F68935-9276-48A0-9917-9B9ABF33C6BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesServiceLib", "ServiceLayer\NotesServiceLib\NotesServiceLib.csproj", "{59F68935-9276-48A0-9917-9B9ABF33C6BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryServiceLib", "FactoryServiceLib\FactoryServiceLib.csproj", "{6009A0A2-F89F-41C6-A0F1-FB2B5C41FFA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryServiceLib", "InfrastructureLayer\FactoryServiceLib\FactoryServiceLib.csproj", "{6009A0A2-F89F-41C6-A0F1-FB2B5C41FFA0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumsLib", "EnumsLib\EnumsLib.csproj", "{FB4CB057-E3BA-4D31-B414-D86CB1B847F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumsLib", "DomainLayer\EnumsLib\EnumsLib.csproj", "{FB4CB057-E3BA-4D31-B414-D86CB1B847F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryDomain", "DirectoryDomain\DirectoryDomain.csproj", "{0934E984-ACEE-4F42-833D-8707B67BCE0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryDomain", "DomainLayer\DirectoryDomain\DirectoryDomain.csproj", "{C6C287F3-56AC-4138-A824-8AB1ED2C0710}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeltaAPI", "DeltaAPI\DeltaAPI.csproj", "{27A09E0A-70F2-48B9-9431-437996E288EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,10 +99,14 @@ Global
 		{FB4CB057-E3BA-4D31-B414-D86CB1B847F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB4CB057-E3BA-4D31-B414-D86CB1B847F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB4CB057-E3BA-4D31-B414-D86CB1B847F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0934E984-ACEE-4F42-833D-8707B67BCE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0934E984-ACEE-4F42-833D-8707B67BCE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0934E984-ACEE-4F42-833D-8707B67BCE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0934E984-ACEE-4F42-833D-8707B67BCE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C287F3-56AC-4138-A824-8AB1ED2C0710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C287F3-56AC-4138-A824-8AB1ED2C0710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C287F3-56AC-4138-A824-8AB1ED2C0710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C287F3-56AC-4138-A824-8AB1ED2C0710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A09E0A-70F2-48B9-9431-437996E288EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A09E0A-70F2-48B9-9431-437996E288EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A09E0A-70F2-48B9-9431-437996E288EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A09E0A-70F2-48B9-9431-437996E288EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,7 +124,7 @@ Global
 		{59F68935-9276-48A0-9917-9B9ABF33C6BA} = {1629B62E-95E6-429D-BCB4-0F37714F66F5}
 		{6009A0A2-F89F-41C6-A0F1-FB2B5C41FFA0} = {20C1BF35-FB9D-4E61-914E-A3E228175708}
 		{FB4CB057-E3BA-4D31-B414-D86CB1B847F3} = {D4F5652A-EBDC-469A-A626-0E13CD1A13A8}
-		{0934E984-ACEE-4F42-833D-8707B67BCE0C} = {D4F5652A-EBDC-469A-A626-0E13CD1A13A8}
+		{C6C287F3-56AC-4138-A824-8AB1ED2C0710} = {D4F5652A-EBDC-469A-A626-0E13CD1A13A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C42E8E54-EE26-4D78-9D48-66521E6DF348}

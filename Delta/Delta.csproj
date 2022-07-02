@@ -18,21 +18,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseRepositoryLib\BaseRepositoryLib.csproj" />
-    <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
-    <ProjectReference Include="..\EnumsLib\EnumsLib.csproj" />
-    <ProjectReference Include="..\NoteDomain\NoteDomain.csproj" />
-    <ProjectReference Include="..\NotesServiceLib\NotesServiceLib.csproj" />
-    <ProjectReference Include="..\RepositoriesLib\RepositoriesLib.csproj" />
-    <ProjectReference Include="..\ServicesLib\ServicesLib.csproj" />
-    <ProjectReference Include="..\UnitOfWork\UnitOfWorkLib.csproj" />
-    <ProjectReference Include="..\UserDomain\UserDomain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="DirectoryDomain">
-      <HintPath>..\DirectoryDomain\bin\Debug\net6.0\DirectoryDomain.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\DomainLayer\BaseEntityLib\BaseEntityLib.csproj" />
+    <ProjectReference Include="..\DomainLayer\EnumsLib\EnumsLib.csproj" />
+    <ProjectReference Include="..\DomainLayer\NoteDomain\NoteDomain.csproj" />
+    <ProjectReference Include="..\DomainLayer\UserDomain\UserDomain.csproj" />
+    <ProjectReference Include="..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
+    <ProjectReference Include="..\RepositoryLayer\BaseRepositoryLib\BaseRepositoryLib.csproj" />
+    <ProjectReference Include="..\RepositoryLayer\DbContextLib\DbContextLib.csproj" />
+    <ProjectReference Include="..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />
+    <ProjectReference Include="..\ServiceLayer\NotesServiceLib\NotesServiceLib.csproj" />
+    <ProjectReference Include="..\ServiceLayer\ServicesLib\ServicesLib.csproj" />
   </ItemGroup>
 
 </Project>
