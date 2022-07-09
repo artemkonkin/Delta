@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Delta</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-
-    <link rel="stylesheet" href="~/lib/tailwind.css"/>
-    <link rel="stylesheet" href="~/lib/fontAwesome.css"/>
-    <link rel="stylesheet" href="~/lib/interFont.css"/>
-    <link rel="stylesheet" href="~/lib/tailwindElements.css"/>
+    
+    <!-- TAILWIND -->
     <link rel="stylesheet" href="~/lib/tw-icons.css"/>
+    <link rel="stylesheet" href="~/lib/interFont.css"/>
+    <link rel="stylesheet" href="~/lib/fontAwesome.css"/>
+    <link rel="stylesheet" href="~/lib/tailwind-elements/twe.css"/>
+    
+    <script src="~/lib/tailwind-elements/tw.js"></script>
+
+    <!-- LIBS -->
     <script src="~/lib/vue.global.prod.js"></script>
     <script src="~/lib/axios.min.js"></script>
     <script src="~/lib/tailwindElements.js"></script>
@@ -51,8 +55,8 @@
     </div>
 </div>
 
+<script src="~/lib/tailwind-elements/twe.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/tw-elements.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
