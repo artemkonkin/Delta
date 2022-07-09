@@ -27,7 +27,7 @@ namespace ServicesLib.Directory
         }
 
         /// <summary>
-        /// Get directory list by id
+        /// Get directories list by id
         /// </summary>
         /// <param name="directoryListId"> Directory list id </param>
         /// <returns></returns>
@@ -38,7 +38,7 @@ namespace ServicesLib.Directory
         }
 
         /// <summary>
-        /// Get directory list with data
+        /// Get directories list with data
         /// </summary>
         /// <param name="directoryListId"> Directory list id </param>
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace ServicesLib.Directory
         }
 
         /// <summary>
-        /// Add directory list
+        /// Add directories list
         /// </summary>
         /// <param name="directoryListEntity"> Directory list entity </param>
         /// <returns></returns>
@@ -67,7 +67,7 @@ namespace ServicesLib.Directory
         }
 
         /// <summary>
-        /// Update directory list
+        /// Update directories list
         /// </summary>
         /// <param name="directoryListEntity"> Directory list entity </param>
         /// <returns></returns>
@@ -78,7 +78,7 @@ namespace ServicesLib.Directory
         }
 
         /// <summary>
-        /// Rename directory list
+        /// Rename directories list
         /// </summary>
         /// <param name="directoryListId"> Directory list id </param>
         /// <param name="directoryListName"> Directory list name </param>
@@ -90,7 +90,7 @@ namespace ServicesLib.Directory
         }
 
         /// <summary>
-        /// Delete directory list
+        /// Delete directories list
         /// </summary>
         /// <param name="directoryListId"> Directory list id </param>
         /// <returns></returns>

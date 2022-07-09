@@ -16,7 +16,6 @@ namespace DirectoryDomain.Directory
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         /// <summary>

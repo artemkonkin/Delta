@@ -1,5 +1,4 @@
 ﻿using DirectoryDomain.Directory;
-using DirectoryRowColData = DirectoryDomain.ViewModels.DirectoryRowColData;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
