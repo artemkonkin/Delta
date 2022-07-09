@@ -27,18 +27,6 @@ namespace Delta.Controllers.Directories
             return View(guidesList);
         }
 
-        public void Create()
-        {
-        }
-
-        public void Edit()
-        {
-        }
-
-        public void Delete()
-        {
-        }
-
         /// <summary>
         /// Get directories lists
         /// </summary>
@@ -69,6 +57,11 @@ namespace Delta.Controllers.Directories
             return Json(response);
         }
 
+        /// <summary>
+        /// Delete directories list
+        /// </summary>
+        /// <param name="guid"> Directories lists guid </param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult DeleteDirectoriesList(Guid guid)
         {
@@ -76,6 +69,11 @@ namespace Delta.Controllers.Directories
             return Json(response);
         }
 
+        /// <summary>
+        /// Edit directories list
+        /// </summary>
+        /// <param name="entity"> Directories lists entiry </param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult EditDirectoriesList(DirectoriesList entity)
         {
