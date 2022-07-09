@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DomainLayer\NoteDomain\NoteDomain.csproj" />
     <ProjectReference Include="..\..\InfrastructureLayer\FactoryServiceLib\FactoryServiceLib.csproj" />
     <ProjectReference Include="..\..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
     <ProjectReference Include="..\..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />

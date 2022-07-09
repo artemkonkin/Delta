@@ -1,7 +1,7 @@
 ﻿using BaseEntityLib;
+using EnumsLib;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using EnumsLib;
 
 namespace DirectoryDomain.Directory
 {

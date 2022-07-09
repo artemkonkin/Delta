@@ -1,5 +1,4 @@
-﻿
-using DbContextLib;
+﻿using DbContextLib;
 
 namespace UnitOfWorkLib
 {

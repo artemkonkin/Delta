@@ -10,8 +10,8 @@
     <ProjectReference Include="..\..\DomainLayer\BaseEntityLib\BaseEntityLib.csproj" />
     <ProjectReference Include="..\..\DomainLayer\DirectoryDomain\DirectoryDomain.csproj" />
     <ProjectReference Include="..\..\DomainLayer\EnumsLib\EnumsLib.csproj" />
+    <ProjectReference Include="..\..\DomainLayer\NoteDomain\NoteDomain.csproj" />
     <ProjectReference Include="..\BaseRepositoryLib\BaseRepositoryLib.csproj" />
-    <ProjectReference Include="..\DbContextLib\DbContextLib.csproj" />
   </ItemGroup>
 
 </Project>
