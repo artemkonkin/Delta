@@ -12,7 +12,7 @@
     .md { }
 </style>
 
-<div id="directoryListViewModel">
+<div id="directoriesListViewModel">
 
     <h3 class="text-4xl font-bold dark:text-white"> @ViewBag.Title </h3>
     
@@ -82,12 +82,12 @@
                    transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                    id=""
                    placeholder="Name"
-                   v-model="directoryName">
+                   v-model="editDirectoriesListData.name">
             <button type="submit" class=" w-full mt-6 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs 
                     leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg 
                     focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 
                     active:shadow-lg transition duration-150 ease-in-out"
-                    v-on:click="createDirectoryList()"
+                    v-on:click="editDirectoriesList()"
                     data-bs-dismiss="offcanvas">
                 Save changes
             </button>
@@ -155,12 +155,13 @@
                 <td class="px-6 py-4 text-right">
                     <a data-bs-toggle="offcanvas"
                        data-bs-target="#edit"
-                       aria-controls="edit" class="font-medium text-blue-600 hover:underline dark:text-blue-500">
+                       aria-controls="edit" class="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                       v-on:click="saveEditedData(item)">
                         Edit |
                     </a>
                     <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Open |</a>
                     <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                       v-on:click="deleteDirectorysList(item)">
+                       v-on:click="deleteDirectoriesList(item)">
                         Delete
                     </a>
                 </td>
@@ -252,61 +253,76 @@
 <script>
 
     // Directory list vm
-    const DirectoryList = {
+    const DirectoriesList = {
         data() {
             return {
                 directoryList: [],
                 data: {},
-                directoryName: ""
+                directoryName: "",
+                editDirectoriesListData: {}
             };
         },
         mounted() {
-            window.axios.get("/Directory/GetDirectorysLists")
+            window.axios.get("/Directory/GetDirectoriesLists")
                 .then((response) => {
                     this.data = Object.assign({}, response.data);
                 });
         },
         methods: {
+
+            // GET
             getDirectoriesLists() {
-                window.axios.get("/Directory/GetDirectorysLists")
+                window.axios.get("/Directory/GetDirectoriesLists")
                     .then((response) => {
                         this.data = Object.assign({}, response.data);
                     });
             },
-            createDirectoryList() {
+
+            // CREATE
+            createDirectoriesList() {
                 window.axios({
                     method: 'POST',
-                    url: '/Directory/CreateDirectoryList',
+                    url: '/Directory/CreateDirectoriesList',
                     params: { directoryListName: this.directoryName }
                 }).then((response) => {
                     console.log(response.data);
                     this.getDirectoriesLists();
                 });
             },
+
+            // DELETE
             deleteDirectoriesList(item) {
                 window.axios({
                     method: 'POST',
-                    url: '/Directory/DeleteDirectorysList',
+                    url: '/Directory/DeleteDirectoriesList',
                     params: { guid: item.id }
                 }).then((response) => {
                     console.log(response.data);
                     this.getDirectoriesLists();
                 });
             },
-            editDirectoriesList(item) {
+
+            // EDIT
+            saveEditedData(item) {
+                this.editDirectoriesListData = item;
+            },
+
+            editDirectoriesList() {
                 window.axios({
                     method: 'POST',
-                    url: '/Directory/EditDirectorysList',
-                    params: item
+                    url: '/Directory/EditDirectoriesList',
+                    params: this.editDirectoriesListData
                 }).then((response) => {
                     console.log(response.data);
                     this.getDirectoriesLists();
+                    this.editDirectoriesListData = {};
                 });
             }
+
         }
     };
 
-    Vue.createApp(DirectoryList).mount('#directoryListViewModel');
+    Vue.createApp(DirectoriesList).mount('#directoriesListViewModel');
 
 </script>
 

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RepositoriesLib.Interfaces.Directory;
 using ServicesLib.Directory;
 using UserDomain;
 
@@ -41,7 +40,7 @@ namespace Delta.Controllers.Directories
         }
 
         /// <summary>
-        /// Get guide lists
+        /// Get directories lists
         /// </summary>
         /// <returns> Directories lists </returns>
         [HttpGet]
@@ -53,19 +52,19 @@ namespace Delta.Controllers.Directories
         }
 
         /// <summary>
-        /// Add guide list
+        /// Add directories list
         /// </summary>
-        /// <param name="directoryListName"> Directories lists name </param>
+        /// <param name="directoriesListName"> Directories lists name </param>
         [HttpPost]
         [Produces("application/json")]
-        public IActionResult CreateDirectoryList(string directoryListName)
+        public IActionResult CreateDirectoriesList(string directoriesListName)
         {
-            var newDirectoryList = new DirectoriesList
+            var newDirectoriesList = new DirectoriesList
             {
-                Name = directoryListName
+                Name = directoriesListName
             };
 
-            var response = _directoryListService.AddDirectoryList(newDirectoryList);
+            var response = _directoryListService.AddDirectoryList(newDirectoriesList);
 
             return Json(response);
         }
