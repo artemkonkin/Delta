@@ -38,13 +38,6 @@ namespace RepositoriesLib.Interfaces.Directory
         Response<DirectoryRowColData> GetDirectoryRowColDataValueByCol(Guid colId);
 
         /// <summary>
-        /// Add empty row col data
-        /// </summary>
-        /// <param name="rowColName"> Row col name </param>
-        /// <returns></returns>
-        Response<DirectoryRowColData> AddEmptyDirectoryRowColData(string rowColName);
-
-        /// <summary>
         /// Add row col data
         /// </summary>
         /// <param name="directoryRowColDataEntity"> Row col entity </param>
@@ -65,14 +58,6 @@ namespace RepositoriesLib.Interfaces.Directory
         /// <param name="value"> Directory row col data value </param>
         /// <returns></returns>
         Response<DirectoryRowColData> EditDirectoryRowColColDataValue(Guid rowColId, object value);
-
-        /// <summary>
-        /// Rename row col data
-        /// </summary>
-        /// <param name="rowColId"> Row col id </param>
-        /// <param name="rowColName"> Row col name </param>
-        /// <returns></returns>
-        Response<DirectoryRowColData> RenameDirectoryRowColData(Guid rowColId, string rowColName);
 
         /// <summary>
         /// Delete row col data

@@ -2,6 +2,7 @@
 using BaseRepositoryLib;
 using DbContextLib;
 using DirectoryDomain.Directory;
+using EnumsLib;
 using RepositoriesLib.Interfaces.Directory;
 
 namespace RepositoriesLib.Repositories.Directory;
@@ -12,48 +13,65 @@ public class DirectoryRowRepository : Repository<DirectoryRow>, IDirectoryRowRep
     {
     }
 
-    public Response<IQueryable<DirectoryCol>> GetAllDirectoriesRows()
+    public Response<IQueryable<DirectoryRow>> GetAllDirectoriesRows()
     {
-        throw new NotImplementedException();
+        var directoryRows = Get(r => true);
+
+        return new Response<IQueryable<DirectoryRow>>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRows,
+            Message = null
+        };
     }
 
     public Response<DirectoryRow> GetDirectoryRow(Guid id)
     {
-        throw new NotImplementedException();
-    }
+        var directoryRows = Get(r => r.Id == id).First();
 
-    public Response<DirectoryRow> GetDirectoryRowData(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Response<IQueryable<DirectoryCol>> GetDirectoryRowCols(Guid id)
-    {
-        throw new NotImplementedException();
+        return new Response<DirectoryRow>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRows,
+            Message = null
+        };
     }
 
     public Response<DirectoryRow> AddDirectoryRow(DirectoryRow directoryRowEntity)
     {
-        throw new NotImplementedException();
-    }
+        Add(directoryRowEntity);
 
-    public Response<DirectoryRow> AddEmptyDirectoryRow(string name)
-    {
-        throw new NotImplementedException();
+        return new Response<DirectoryRow>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowEntity,
+            Message = null
+        };
     }
 
     public Response<DirectoryRow> EditDirectoryRow(DirectoryRow directoryRowEntity)
     {
-        throw new NotImplementedException();
-    }
+        Update(directoryRowEntity);
 
-    public Response<DirectoryRow> RenameDirectoryRow(Guid id, string name)
-    {
-        throw new NotImplementedException();
+        return new Response<DirectoryRow>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowEntity,
+            Message = null
+        };
     }
 
     public Response<DirectoryRow> DeleteDirectoryRow(Guid id)
     {
-        throw new NotImplementedException();
+        var directoryRows = Get(r => r.Id == id).First();
+
+        Delete(directoryRows);
+
+        return new Response<DirectoryRow>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRows,
+            Message = null
+        };
     }
 }

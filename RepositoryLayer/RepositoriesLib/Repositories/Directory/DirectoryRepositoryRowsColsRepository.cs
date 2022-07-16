@@ -2,6 +2,7 @@
 using BaseRepositoryLib;
 using DbContextLib;
 using DirectoryDomain.Directory;
+using EnumsLib;
 using RepositoriesLib.Interfaces.Directory;
 
 namespace RepositoriesLib.Repositories.Directory;
@@ -14,51 +15,105 @@ public class DirectoryRowColDataRepository : Repository<DirectoryRowColData>, ID
 
     public Response<IQueryable<DirectoryRowColData>> GetAllDirectoryRowsColsData()
     {
-        throw new NotImplementedException();
+        var directoryRowColData = Get(d => true);
+
+        return new Response<IQueryable<DirectoryRowColData>>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColData,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> GetDirectoryRowColColData(Guid rowColId)
     {
-        throw new NotImplementedException();
+        var directoryRowColData = Get(d => d.Id == rowColId).First();
+
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColData,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> GetDirectoryRowColDataValueByRow(Guid rowId)
     {
-        throw new NotImplementedException();
+        var directoryRowColData = Get(d => true)
+            .First(r => r.DirectoryRowId == rowId);
+
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColData,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> GetDirectoryRowColDataValueByCol(Guid colId)
     {
-        throw new NotImplementedException();
-    }
+        var directoryRowColData = Get(d => true)
+            .First(r => r.DirectoryColId == colId);
 
-    public Response<DirectoryRowColData> AddEmptyDirectoryRowColData(string rowColName)
-    {
-        throw new NotImplementedException();
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColData,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> AddDirectoryRowColData(DirectoryRowColData directoryRowColDataEntity)
     {
-        throw new NotImplementedException();
+        Add(directoryRowColDataEntity);
+
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColDataEntity,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> EditDirectoryRowColColData(DirectoryRowColData directoryRowColDataEntity)
     {
-        throw new NotImplementedException();
+        Update(directoryRowColDataEntity);
+
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColDataEntity,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> EditDirectoryRowColColDataValue(Guid rowColId, object value)
     {
-        throw new NotImplementedException();
-    }
+        var directoryRowColData = Get(d => d.Id == rowColId).First();
 
-    public Response<DirectoryRowColData> RenameDirectoryRowColData(Guid rowColId, string rowColName)
-    {
-        throw new NotImplementedException();
+        directoryRowColData.Value = value;
+
+        Update(directoryRowColData);
+
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColData,
+            Message = null
+        };
     }
 
     public Response<DirectoryRowColData> DeleteDirectoryRowColData(Guid rowColId)
     {
-        throw new NotImplementedException();
+        var directoryRowColData = Get(d => d.Id == rowColId).First();
+
+        Delete(directoryRowColData);
+
+        return new Response<DirectoryRowColData>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryRowColData,
+            Message = null
+        };
     }
 }

@@ -94,14 +94,14 @@ public class DirectoryEntityRepository : Repository<DirectoryEntity>, IDirectory
 
     public Response<DirectoryEntity> DeleteDirectoryEntity(Guid id)
     {
-        var directoryEntity = GetDirectoryEntity(id).Data;
+        var directoryEntity = Get(e => e.Id == id).First();
 
         Delete(directoryEntity);
 
         return new Response<DirectoryEntity>
         {
             Status = ResponseStatus.Success,
-            Data = new DirectoryEntity(),
+            Data = directoryEntity,
             Message = ""
         };
     }
