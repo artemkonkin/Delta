@@ -1,13 +1,13 @@
 ﻿using BaseRepositoryLib;
 using DbContextLib;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using NotesServiceLib;
-using RepositoriesLib;
-using RepositoriesLib.Interfaces;
+using DirectoryServiceLib;
+using DirectoryServiceLib.Interface;
+using Microsoft.AspNetCore.Identity;
 using RepositoriesLib.Interfaces.Directory;
+using RepositoriesLib.Interfaces.Note;
+using RepositoriesLib.Repositories.Directory;
+using RepositoriesLib.Repositories.Note;
 using UnitOfWorkLib;
-using UserDomain;
 
 namespace Delta.Extensions
 {
@@ -17,57 +17,79 @@ namespace Delta.Extensions
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Настройка соединения с базой данных
+        /// Authentication config
         /// </summary>
-        /// <param name="services"> Коллекция сервисов </param>
-        /// <param name="configuration"> Конфигуратор </param>
-        /// <returns></returns>
-        public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+        /// <param name="services"></param>
+        public static void AddAuthConfiguration(this IServiceCollection services)
         {
-            var conStrBuilder = new SqlConnectionStringBuilder(configuration.GetConnectionString("DeltaConnectionString"));
-            var connection = conStrBuilder.ConnectionString;
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
 
-            services.AddDbContext<AppDbContext>(options => { options.UseSqlServer(connection); });
-            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<AppDbContext>();
-
-            services.AddControllersWithViews();
-
-            return services;
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
         }
 
         /// <summary>
-        /// Добавление репозиториев
+        /// Repositories
         /// </summary>
-        /// <param name="services"> Коллекция сервисов </param>
-        /// <returns></returns>
-        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        /// <param name="services"></param>
+        /// <exception cref="InvalidOperationException"></exception>
+        public static void AddRepositories(this IServiceCollection services)
         {
+            // Repository
             services.AddScoped<Func<AppDbContext>>((provider) => ()
                 => provider.GetService<AppDbContext>()
                    ?? throw new InvalidOperationException());
-
-            services.AddScoped<DbFactory>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IDirectoryListRepository, DirectoryListRepository>();
+
+            // Note
             services.AddScoped<INoteRepository, NoteRepository>();
 
-            return services;
+            // Directory
+            services.AddScoped<IDirectoryListRepository, DirectoryListRepository>();
+            services.AddScoped<IDirectoryEntityRepository, DirectoryEntityRepository>();
+            services.AddScoped<IDirectoryRowRepository, DirectoryRowRepository>();
+            services.AddScoped<IDirectoryColRepository, DirectoryColRepository>();
+            services.AddScoped<IDirectoryRowColDataRepository, DirectoryRowColDataRepository>();
+            services.AddScoped<IDirectoryRepository>();
         }
 
         /// <summary>
-        /// Добавить сервисы
+        /// Services
         /// </summary>
         /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<NotesService>();
-            // services.AddScoped<DirectoryListService>();
+            services.AddTransient<IDirectoryListService, DirectoryListService>();
+        }
 
-            return services;
+        /// <summary>
+        /// Infrestructure
+        /// </summary>
+        /// <param name="services"></param>
+        public static void AddInfrastructure(this IServiceCollection services)
+        {
+            services.AddScoped<DbFactory>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

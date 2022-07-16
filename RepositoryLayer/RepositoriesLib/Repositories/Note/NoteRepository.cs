@@ -3,9 +3,9 @@ using BaseRepositoryLib;
 using DbContextLib;
 using EnumsLib;
 using NoteDomain;
-using RepositoriesLib.Interfaces;
+using RepositoriesLib.Interfaces.Note;
 
-namespace RepositoriesLib
+namespace RepositoriesLib.Repositories.Note
 {
     public class NoteRepository : Repository<NoteEntity>, INoteRepository
     {

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
-using RepositoriesLib.Interfaces;
 using UserDomain;
+using RepositoriesLib.Interfaces.Note;
 
 namespace Delta.Controllers
 {

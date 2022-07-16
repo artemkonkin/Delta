@@ -1,20 +1,28 @@
 ﻿using BaseEntityLib;
 using DirectoryDomain;
 using DirectoryDomain.ViewModels;
+using DirectoryServiceLib.Interface;
 using Microsoft.AspNetCore.Identity;
 using RepositoriesLib.Interfaces.Directory;
 using UnitOfWorkLib;
 using UserDomain;
 
-namespace ServicesLib.Directory
+namespace DirectoryServiceLib
 {
     public class DirectoryListService : IDirectoryListService
     {
+        private readonly IUnitOfWork _uow;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IDirectoryListRepository _directoryListRepository;
+        private readonly IDirectoryRepository _directoryRepository;
 
-        public DirectoryListService(IUnitOfWork uow, UserManager<AppUser> userManager, IDirectoryListRepository directoryListRepository)
+        public DirectoryListService(IUnitOfWork uow, UserManager<AppUser> userManager,
+            IDirectoryListRepository directoryListRepository, IDirectoryRepository directoryRepository)
         {
+            _uow = uow;
+            _userManager = userManager;
             _directoryListRepository = directoryListRepository;
+            _directoryRepository = directoryRepository;
         }
 
         /// <summary>

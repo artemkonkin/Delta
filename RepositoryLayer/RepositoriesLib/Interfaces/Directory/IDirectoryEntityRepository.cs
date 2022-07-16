@@ -1,8 +1,10 @@
-﻿using DirectoryDomain.Directory;
+﻿using BaseEntityLib;
+using BaseRepositoryLib;
+using DirectoryDomain.Directory;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
-    public interface IDirectory
+    public interface IDirectoryEntityRepository : IRepository<DirectoryEntity>, IDirectoryRepository
     {
         /* GUIDES */
 
@@ -12,35 +14,35 @@ namespace RepositoriesLib.Interfaces.Directory
         /// Get all directories
         /// </summary>
         /// <returns></returns>
-        IQueryable<DirectoryEntity> GetAllDirectories();
+        Response<IQueryable<DirectoryEntity>> GetAllDirectoriesEntities();
 
         /// <summary>
         /// Get directory
         /// </summary>
         /// <param name="id"> Directory id </param>
         /// <returns></returns>
-        DirectoryEntity GetDirectory(Guid id);
+        Response<DirectoryEntity> GetDirectoryEntity(Guid id);
 
         /// <summary>
         /// Add directory
         /// </summary>
         /// <param name="directoryEntity"> Directory entity </param>
         /// <returns></returns>
-        DirectoryEntity AddDirectory(DirectoryEntity directoryEntity);
+        Response<DirectoryEntity> AddDirectoryEntity(DirectoryEntity directoryEntity);
 
         /// <summary>
         /// Add empty directory
         /// </summary>
         /// <param name="name"> Directory name </param>
         /// <returns></returns>
-        DirectoryEntity AddEmptyDirectory(string name);
+        Response<DirectoryEntity> AddEmptyDirectoryEntity(string name);
 
         /// <summary>
         /// Edit directory
         /// </summary>
         /// <param name="directoryEntity"> Directory entity </param>
         /// <returns></returns>
-        DirectoryEntity EditDirectory(DirectoryEntity directoryEntity);
+        Response<DirectoryEntity> EditDirectory(DirectoryEntity directoryEntity);
 
         /// <summary>
         /// Rename directory
@@ -48,14 +50,14 @@ namespace RepositoriesLib.Interfaces.Directory
         /// <param name="id"> Directory id </param>
         /// <param name="name"> Directory name </param>
         /// <returns></returns>
-        DirectoryEntity RenameDirectory(Guid id, string name);
+        Response<DirectoryEntity> RenameDirectoryEntity(Guid id, string name);
 
         /// <summary>
         /// Delete directory
         /// </summary>
         /// <param name="id"> Directory id </param>
         /// <returns></returns>
-        IQueryable<DirectoryEntity> DeleteDirectory(Guid id);
+        Response<DirectoryEntity> DeleteDirectoryEntity(Guid id);
 
         #endregion
     }

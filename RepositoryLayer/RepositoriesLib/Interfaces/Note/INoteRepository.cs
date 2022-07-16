@@ -2,7 +2,7 @@
 using BaseRepositoryLib;
 using NoteDomain;
 
-namespace RepositoriesLib.Interfaces
+namespace RepositoriesLib.Interfaces.Note
 {
     public interface INoteRepository : IRepository<NoteEntity>
     {

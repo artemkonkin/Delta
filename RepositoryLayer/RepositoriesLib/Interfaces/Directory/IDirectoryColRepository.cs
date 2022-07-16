@@ -1,8 +1,10 @@
-﻿using DirectoryDomain.Directory;
+﻿using BaseEntityLib;
+using BaseRepositoryLib;
+using DirectoryDomain.Directory;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
-    public interface IDirectoryColumn
+    public interface IDirectoryColRepository : IRepository<DirectoryCol>, IDirectoryRepository
     {
         /* COLUMNS */
 
@@ -12,35 +14,35 @@ namespace RepositoriesLib.Interfaces.Directory
         /// Get all dirrectory cols
         /// </summary>
         /// <returns></returns>
-        IQueryable<DirectoryCol> GetAllDirectoriesCols();
+        Response<IQueryable<DirectoryCol>> GetAllDirectoriesCols();
 
         /// <summary>
         /// Get dirrectory col
         /// </summary>
         /// <param name="id"> Col id </param>
         /// <returns></returns>
-        DirectoryCol GetDirectoryCol(Guid id);
+        Response<DirectoryCol> GetDirectoryCol(Guid id);
 
         /// <summary>
         /// Add dirrectory col
         /// </summary>
         /// <param name="directoryColEntity"> Directory col entity </param>
         /// <returns></returns>
-        DirectoryCol AddDirectoryCol(DirectoryCol directoryColEntity);
+        Response<DirectoryCol> AddDirectoryCol(DirectoryCol directoryColEntity);
 
         /// <summary>
         /// Add emty dirrectory col
         /// </summary>
         /// <param name="name"> Directory col name </param>
         /// <returns></returns>
-        DirectoryCol AddEmptyDirectoryCol(string name);
+        Response<DirectoryCol> AddEmptyDirectoryCol(string name);
 
         /// <summary>
         /// Edit dirrectory col
         /// </summary>
         /// <param name="directoryColEntity"> Directory col entity </param>
         /// <returns></returns>
-        DirectoryCol EditDirectoryCol(DirectoryCol directoryColEntity);
+        Response<DirectoryCol> EditDirectoryCol(DirectoryCol directoryColEntity);
 
         /// <summary>
         /// Rename dirrectory col
@@ -48,14 +50,14 @@ namespace RepositoriesLib.Interfaces.Directory
         /// <param name="id"> Directory col id </param>
         /// <param name="name"> Directory col name </param>
         /// <returns></returns>
-        DirectoryCol RenameDirectoryCol(Guid id, string name);
+        Response<DirectoryCol> RenameDirectoryCol(Guid id, string name);
 
         /// <summary>
         /// Delete dirrectory col
         /// </summary>
         /// <param name="id"> Directory col id </param>
         /// <returns></returns>
-        IQueryable<DirectoryCol> DeleteDirectoryCol(Guid id);
+        Response<DirectoryCol> DeleteDirectoryCol(Guid id);
 
         #endregion
     }

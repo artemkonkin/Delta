@@ -1,9 +1,9 @@
 ﻿using BaseRepositoryLib;
 using DbContextLib;
-using RepositoriesLib.Interfaces;
+using RepositoriesLib.Interfaces.User;
 using AppUser = UserDomain.AppUser;
 
-namespace RepositoriesLib
+namespace RepositoriesLib.Repositories.User
 {
     public class UserRepository : Repository<AppUser>, IUserRepository
     {

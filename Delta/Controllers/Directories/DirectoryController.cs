@@ -1,8 +1,8 @@
 ﻿using DirectoryDomain;
+using DirectoryServiceLib.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ServicesLib.Directory;
 using UserDomain;
 
 namespace Delta.Controllers.Directories
