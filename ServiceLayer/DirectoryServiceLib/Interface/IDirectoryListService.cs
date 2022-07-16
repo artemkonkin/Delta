@@ -2,7 +2,7 @@
 using DirectoryDomain;
 using DirectoryDomain.ViewModels;
 
-namespace ServicesLib.Directory
+namespace DirectoryServiceLib.Interface
 {
     public interface IDirectoryListService
     {

@@ -1,16 +1,10 @@
-using BaseRepositoryLib;
 using DbContextLib;
-using Microsoft.AspNetCore.Identity;
+using Delta.Extensions;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using RepositoriesLib;
-using RepositoriesLib.Interfaces;
-using RepositoriesLib.Interfaces.Directory;
-using ServicesLib.Directory;
-using UnitOfWorkLib;
 using UserDomain;
 
-// Δ Delta
+// Δ DELTA
 
 var builder = WebApplication.CreateBuilder(args);
 var conStrBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("DeltaConnectionString"));
@@ -21,61 +15,13 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AppDbContext>();
 
-// MVC
-
 builder.Services.AddControllersWithViews();
-
-// AUTH
-
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    // Password settings.
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequiredLength = 6;
-    options.Password.RequiredUniqueChars = 1;
-
-    // Lockout settings.
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-    options.Lockout.MaxFailedAccessAttempts = 5;
-    options.Lockout.AllowedForNewUsers = true;
-
-    // User settings.
-    options.User.AllowedUserNameCharacters =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-    options.User.RequireUniqueEmail = false;
-});
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    // Cookie settings
-    options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.SlidingExpiration = true;
-});
-
-// REPOSITORIES
-
-builder.Services.AddScoped<Func<AppDbContext>>((provider) => ()
-    => provider.GetService<AppDbContext>()
-       ?? throw new InvalidOperationException());
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<IDirectoryListRepository, DirectoryListRepository>();
-builder.Services.AddScoped<INoteRepository, NoteRepository>();
-builder.Services.AddScoped<DbFactory>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-// SERVICES
-
-builder.Services.AddTransient<IDirectoryListService, DirectoryListService>();
+builder.Services.AddAuthConfiguration();
+builder.Services.AddRepositories();
+builder.Services.AddServices();
+builder.Services.AddInfrastructure();
 
 // APP
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -90,15 +36,11 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
-
 app.Run();

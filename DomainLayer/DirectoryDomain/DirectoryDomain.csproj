@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BaseEntityLib\BaseEntityLib.csproj" />
     <ProjectReference Include="..\BaseEntityLib\BaseEntityLib.csproj" />
   </ItemGroup>
 

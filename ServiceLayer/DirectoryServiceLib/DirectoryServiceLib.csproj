@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,12 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DomainLayer\UserDomain\UserDomain.csproj" />
     <ProjectReference Include="..\..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
     <ProjectReference Include="..\..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Directory\" />
   </ItemGroup>
 
 </Project>

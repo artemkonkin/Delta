@@ -11,7 +11,6 @@ namespace DirectoryDomain.Directory
     public class DirectoryRow : IBaseEntity<Guid>
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         /// <summary>
@@ -31,6 +30,6 @@ namespace DirectoryDomain.Directory
         /// Row - Col data
         /// </summary>
         [ForeignKey("DirectoryRowId")]
-        public virtual ICollection<ViewModels.DirectoryRowColData> DirectoryRowColData { get; set; }
+        public virtual ICollection<DirectoryRowColData> DirectoryRowColData { get; set; }
     }
 }

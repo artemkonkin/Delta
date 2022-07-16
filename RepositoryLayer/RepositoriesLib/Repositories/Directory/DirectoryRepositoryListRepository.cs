@@ -5,7 +5,7 @@ using DirectoryDomain;
 using EnumsLib;
 using RepositoriesLib.Interfaces.Directory;
 
-namespace RepositoriesLib
+namespace RepositoriesLib.Repositories.Directory
 {
     public class DirectoryListRepository : Repository<DirectoriesList>, IDirectoryListRepository
     {
@@ -33,8 +33,8 @@ namespace RepositoriesLib
             return new Response<DirectoriesList>
             {
                 Status = ResponseStatus.Success,
-                Data = result.Any() 
-                    ? result.First() 
+                Data = result.Any()
+                    ? result.First()
                     : throw new Exception($"Directory list {directoryListId} not fount."),
                 Message = null
             };
@@ -48,7 +48,7 @@ namespace RepositoriesLib
         public Response<DirectoriesList> AddDirectoryList(DirectoriesList directoryListEntity)
         {
             Add(directoryListEntity);
-            
+
             return new Response<DirectoriesList>
             {
                 Status = ResponseStatus.Success,
@@ -68,7 +68,7 @@ namespace RepositoriesLib
             {
                 Name = name
             };
-            
+
             Add(newList);
 
             return new Response<DirectoriesList>
@@ -105,10 +105,10 @@ namespace RepositoriesLib
         public Response<DirectoriesList> RenameDirectoryList(Guid id, string name)
         {
             var guideList = Get(x => x.Id == id);
-            
-            if (!guideList.Any()) 
+
+            if (!guideList.Any())
                 throw new Exception($"Directory list {id} not fount.");
-            
+
             var list = guideList.First();
 
             var updatedList = new DirectoriesList

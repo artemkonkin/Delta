@@ -1,7 +1,7 @@
 ﻿using BaseRepositoryLib;
 using AppUser = UserDomain.AppUser;
 
-namespace RepositoriesLib.Interfaces
+namespace RepositoriesLib.Interfaces.User
 {
     public interface IUserRepository : IRepository<AppUser>
     {

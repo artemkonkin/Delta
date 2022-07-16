@@ -17,7 +17,6 @@ public class DirectoriesList : IBaseEntity<Guid>
     }
 
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
     /// <summary>

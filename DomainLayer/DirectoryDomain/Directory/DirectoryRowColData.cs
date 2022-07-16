@@ -10,7 +10,6 @@ namespace DirectoryDomain.Directory
     public class DirectoryRowColData
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         /// <summary>

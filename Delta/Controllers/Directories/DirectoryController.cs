@@ -1,9 +1,8 @@
 ﻿using DirectoryDomain;
+using DirectoryServiceLib.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RepositoriesLib.Interfaces.Directory;
-using ServicesLib.Directory;
 using UserDomain;
 
 namespace Delta.Controllers.Directories
@@ -11,12 +10,10 @@ namespace Delta.Controllers.Directories
     [Authorize]
     public class DirectoryController : BaseController
     {
-        private readonly IDirectoryListRepository _directoryListRepository;
         private readonly IDirectoryListService _directoryListService;
 
-        public DirectoryController(IDirectoryListRepository directoryListRepository, UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
+        public DirectoryController(UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
         {
-            _directoryListRepository = directoryListRepository;
             _directoryListService = directoryListService;
         }
 
@@ -30,20 +27,8 @@ namespace Delta.Controllers.Directories
             return View(guidesList);
         }
 
-        public void Create()
-        {
-        }
-
-        public void Edit()
-        {
-        }
-
-        public void Delete()
-        {
-        }
-
         /// <summary>
-        /// Get guide lists
+        /// Get directories lists
         /// </summary>
         /// <returns> Directories lists </returns>
         [HttpGet]
@@ -55,23 +40,28 @@ namespace Delta.Controllers.Directories
         }
 
         /// <summary>
-        /// Add guide list
+        /// Add directories list
         /// </summary>
-        /// <param name="directoryListName"> Directories lists name </param>
+        /// <param name="directoriesListName"> Directories lists name </param>
         [HttpPost]
         [Produces("application/json")]
-        public IActionResult CreateDirectoryList(string directoryListName)
+        public IActionResult CreateDirectoriesList(string directoriesListName)
         {
-            var newDirectoryList = new DirectoriesList
+            var newDirectoriesList = new DirectoriesList
             {
-                Name = directoryListName
+                Name = directoriesListName
             };
 
-            var response = _directoryListService.AddDirectoryList(newDirectoryList);
+            var response = _directoryListService.AddDirectoryList(newDirectoriesList);
 
             return Json(response);
         }
 
+        /// <summary>
+        /// Delete directories list
+        /// </summary>
+        /// <param name="guid"> Directories lists guid </param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult DeleteDirectoriesList(Guid guid)
         {
@@ -79,6 +69,11 @@ namespace Delta.Controllers.Directories
             return Json(response);
         }
 
+        /// <summary>
+        /// Edit directories list
+        /// </summary>
+        /// <param name="entity"> Directories lists entiry </param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult EditDirectoriesList(DirectoriesList entity)
         {

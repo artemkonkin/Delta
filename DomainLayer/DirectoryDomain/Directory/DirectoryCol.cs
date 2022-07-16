@@ -1,7 +1,7 @@
 ﻿using BaseEntityLib;
+using EnumsLib;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using EnumsLib;
 
 namespace DirectoryDomain.Directory
 {
@@ -12,7 +12,6 @@ namespace DirectoryDomain.Directory
     public class DirectoryCol : IBaseEntity<Guid>
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         /// <summary>
@@ -31,6 +30,6 @@ namespace DirectoryDomain.Directory
         /// CollData
         /// </summary>
         [ForeignKey("DirectoryColId")]
-        public virtual ICollection<ViewModels.DirectoryRowColData> DirectoryRowColData { get; set; }
+        public virtual ICollection<DirectoryRowColData> DirectoryRowColData { get; set; }
     }
 }
