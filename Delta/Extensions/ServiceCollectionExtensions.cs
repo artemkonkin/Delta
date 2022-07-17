@@ -70,7 +70,6 @@ namespace Delta.Extensions
             services.AddScoped<IDirectoryRowRepository, DirectoryRowRepository>();
             services.AddScoped<IDirectoryColRepository, DirectoryColRepository>();
             services.AddScoped<IDirectoryRowColDataRepository, DirectoryRowColDataRepository>();
-            services.AddScoped<IDirectoryRepository>();
         }
 
         /// <summary>
@@ -80,6 +79,7 @@ namespace Delta.Extensions
         public static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<IDirectoryListService, DirectoryListService>();
+            services.AddTransient<IDirectoryService, DirectoryService>();
         }
 
         /// <summary>

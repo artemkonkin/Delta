@@ -14,15 +14,13 @@ namespace DirectoryServiceLib
         private readonly IUnitOfWork _uow;
         private readonly UserManager<AppUser> _userManager;
         private readonly IDirectoryListRepository _directoryListRepository;
-        private readonly IDirectoryRepository _directoryRepository;
 
         public DirectoryListService(IUnitOfWork uow, UserManager<AppUser> userManager,
-            IDirectoryListRepository directoryListRepository, IDirectoryRepository directoryRepository)
+            IDirectoryListRepository directoryListRepository)
         {
             _uow = uow;
             _userManager = userManager;
             _directoryListRepository = directoryListRepository;
-            _directoryRepository = directoryRepository;
         }
 
         /// <summary>

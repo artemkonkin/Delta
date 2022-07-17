@@ -24,6 +24,17 @@ public class DirectoryEntityRepository : Repository<DirectoryEntity>, IDirectory
         };
     }
 
+    public Response<IQueryable<DirectoryEntity>> GetAllDirectoriesEntitiesByListId(Guid directoryListId)
+    {
+        var directoryEntity = Get(e => e.DirectoryListId == directoryListId);
+        return new Response<IQueryable<DirectoryEntity>>
+        {
+            Status = ResponseStatus.Success,
+            Data = directoryEntity,
+            Message = null
+        };
+    }
+
     public Response<DirectoryEntity> GetDirectoryEntity(Guid id)
     {
         var directoryEntity = Get(e => true).First();

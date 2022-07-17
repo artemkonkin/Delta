@@ -10,6 +10,11 @@ namespace DirectoryDomain.Directory
     [Table("DirectoriesRows")]
     public class DirectoryRow : IBaseEntity<Guid>
     {
+        public DirectoryRow()
+        {
+            DirectoryRowColData = new List<DirectoryRowColData>();
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -29,7 +34,7 @@ namespace DirectoryDomain.Directory
         /// <summary>
         /// Row - Col data
         /// </summary>
-        [ForeignKey("DirectoryRowId")]
+        [ForeignKey("DirectoryRowColId")]
         public virtual ICollection<DirectoryRowColData> DirectoryRowColData { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace RepositoriesLib.Interfaces.Directory
     /// <summary>
     /// Directory list interface
     /// </summary>
-    public interface IDirectoryListRepository : IRepository<DirectoriesList>, IDirectoryRepository
+    public interface IDirectoryListRepository : IRepository<DirectoriesList>
     {
         /// <summary>
         /// Get all directory lists
