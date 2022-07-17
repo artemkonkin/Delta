@@ -4,7 +4,7 @@ using DirectoryDomain.Directory;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
-    public interface IDirectoryRowColDataRepository : IRepository<DirectoryRowColData>, IDirectoryRepository
+    public interface IDirectoryRowColDataRepository : IRepository<DirectoryRowColData>
     {
         /* DIRECTORY ROW - COL DATA VALUE */
 

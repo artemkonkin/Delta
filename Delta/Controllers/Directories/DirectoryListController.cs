@@ -8,11 +8,11 @@ using UserDomain;
 namespace Delta.Controllers.Directories
 {
     [Authorize]
-    public class DirectoryController : BaseController
+    public class DirectoryListController : BaseController
     {
         private readonly IDirectoryListService _directoryListService;
 
-        public DirectoryController(UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
+        public DirectoryListController(UserManager<AppUser>? userManager, IDirectoryListService directoryListService) : base(userManager)
         {
             _directoryListService = directoryListService;
         }

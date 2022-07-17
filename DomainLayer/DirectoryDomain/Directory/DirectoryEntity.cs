@@ -36,7 +36,6 @@ namespace DirectoryDomain.Directory
         /// <summary>
         /// Rows
         /// </summary>
-        [ForeignKey("DirectoryRowId")]
         public virtual ICollection<DirectoryRow> DirectoryRows { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using DirectoryDomain.Directory;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
-    public interface IDirectoryEntityRepository : IRepository<DirectoryEntity>, IDirectoryRepository
+    public interface IDirectoryEntityRepository : IRepository<DirectoryEntity>
     {
         /* GUIDES */
 
@@ -15,6 +15,13 @@ namespace RepositoriesLib.Interfaces.Directory
         /// </summary>
         /// <returns></returns>
         Response<IQueryable<DirectoryEntity>> GetAllDirectoriesEntities();
+
+        /// <summary>
+        /// Get directories by directory list id
+        /// </summary>
+        /// <param name="directoryListId"> Directory list id </param>
+        /// <returns></returns>
+        Response<IQueryable<DirectoryEntity>> GetAllDirectoriesEntitiesByListId(Guid directoryListId);
 
         /// <summary>
         /// Get directory

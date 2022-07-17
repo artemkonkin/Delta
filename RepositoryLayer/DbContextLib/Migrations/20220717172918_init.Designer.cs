@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DbContextLib.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220701042908_directory")]
-    partial class directory
+    [Migration("20220717172918_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,7 +104,7 @@ namespace DbContextLib.Migrations
                     b.ToTable("DirectoriesRows");
                 });
 
-            modelBuilder.Entity("DirectoryDomain.ViewModels.DirectoryRowColData", b =>
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryRowColData", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -386,7 +386,7 @@ namespace DbContextLib.Migrations
                     b.Navigation("Directory");
                 });
 
-            modelBuilder.Entity("DirectoryDomain.ViewModels.DirectoryRowColData", b =>
+            modelBuilder.Entity("DirectoryDomain.Directory.DirectoryRowColData", b =>
                 {
                     b.HasOne("DirectoryDomain.Directory.DirectoryCol", "DirectoryCol")
                         .WithMany("DirectoryRowColData")

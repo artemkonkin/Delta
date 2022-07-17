@@ -31,4 +31,9 @@
     <ProjectReference Include="..\ServiceLayer\ServicesLib\ServicesLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Views\DirectoryItem\" />
+  </ItemGroup>
+
 </Project>

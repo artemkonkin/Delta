@@ -4,7 +4,7 @@ using DirectoryDomain.Directory;
 
 namespace RepositoriesLib.Interfaces.Directory
 {
-    public interface IDirectoryRowRepository : IRepository<DirectoryRow>, IDirectoryRepository
+    public interface IDirectoryRowRepository : IRepository<DirectoryRow>
     {
         /* ROWS */
 
