@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DbContextLib;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using BaseEntityLib;
-using DbContextLib;
 
 namespace BaseRepositoryLib
 {

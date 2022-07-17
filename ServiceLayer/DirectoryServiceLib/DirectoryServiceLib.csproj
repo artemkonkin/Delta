@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DomainLayer\BaseEntityLib\BaseEntityLib.csproj" />
+    <ProjectReference Include="..\..\DomainLayer\DirectoryDomain\DirectoryDomain.csproj" />
     <ProjectReference Include="..\..\DomainLayer\UserDomain\UserDomain.csproj" />
     <ProjectReference Include="..\..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
     <ProjectReference Include="..\..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />

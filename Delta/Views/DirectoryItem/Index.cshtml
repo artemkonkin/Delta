@@ -1,8 +1,106 @@
 ﻿@model DirectoryDomain.ViewModels.DirectoryItemViewModel
 
 @{
-    ViewBag.Title = "Справочники";
+    ViewBag.Title = "Directories";
     Layout = "_Layout";
 }
 
-<h2>Справочники</h2>
+<h2>Directories</h2>
+
+<div id="directoryItem">
+    
+    <!-- TABLE -->
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
+
+        <div class="p-4">
+            <div class="flex w-full flex-row">
+                <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase 
+                        rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  
+                        focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#create"
+                        aria-controls="create">
+                    Create
+                </button>
+            </div>
+            <label for="table-search" class="sr-only">Search</label>
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <input type="text" id="table-search"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                       focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 
+                       dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       placeholder="Search for items">
+            </div>
+        </div>
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            @*HEAD*@
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Id
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Edit</span>
+                </th>
+            </tr>
+            </thead>
+            @*BODY*@
+            <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                v-for="(item, index) in data" :key="index">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                    {{ index }}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                    {{ item.id }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ item.name }}
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a data-bs-toggle="offcanvas"
+                       data-bs-target="#edit"
+                       aria-controls="edit" class="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                       v-on:click="saveEditedData(item)">
+                        Edit |
+                    </a>
+                    <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Open |</a>
+                    <a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                       v-on:click="deleteDirectoriesList(item)">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+
+    // Directory list vm
+    const DirectoryItem = {
+        data() {
+            return {
+            };
+        },
+        mounted() {
+        },
+        methods: {
+        }
+    };
+
+    Vue.createApp(DirectoryItem).mount('#directoryItem');
+
+</script>

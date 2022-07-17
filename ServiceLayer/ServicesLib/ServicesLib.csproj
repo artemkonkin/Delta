@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\InfrastructureLayer\UnitOfWork\UnitOfWorkLib.csproj" />
-    <ProjectReference Include="..\..\RepositoryLayer\RepositoriesLib\RepositoriesLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,12 +1,12 @@
-﻿using EnumsLib;
-using System.Data;
-using System.Security.Claims;
-using BaseServiceLib;
+﻿using BaseServiceLib;
+using EnumsLib;
 using Microsoft.AspNetCore.Identity;
 using NoteDomain;
+using System.Data;
+using System.Security.Claims;
+using RepositoriesLib.Interfaces.Note;
 using UnitOfWorkLib;
 using UserDomain;
-using RepositoriesLib.Interfaces.Note;
 
 namespace NotesServiceLib
 {
