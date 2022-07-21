@@ -15,6 +15,11 @@ namespace Delta.Controllers.Directories
             _viewModel = new DirectoryItemViewModel();
         }
 
+        /// <summary>
+        /// Directories list
+        /// </summary>
+        /// <param name="directoryListId"> Directories list id </param>
+        /// <returns></returns>
         public IActionResult Index(Guid directoryListId)
         {
             var directories = _directoryService.GetDirectoryEntities(directoryListId);
